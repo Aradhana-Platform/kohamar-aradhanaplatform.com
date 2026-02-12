@@ -16,7 +16,7 @@
 // export default page
 
 "use client";
-import BlogCards from '@/Components/BlogCards'
+import BlogCards from '../../Components/BlogCards'
 import { useState, useEffect } from "react";
 
 /* ─── Inline SVG Icons ─────────────────────────────────────────────────────── */

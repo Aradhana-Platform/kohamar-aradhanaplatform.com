@@ -1,9 +1,9 @@
 "use client";
-import { CORE_VALUES, T, TeamMember } from "@/Components/about/CoreValue";
-import { TeamCard } from "@/Components/about/MeetTeam";
-import { SectionLabel } from "@/Components/about/SectionLabel";
-import { ValueCard } from "@/Components/about/ValueCard";
-import { Reveal } from "@/Components/Reveal";
+import { CORE_VALUES, T, TeamMember } from "../../Components/about/CoreValue";
+import { TeamCard } from "../../Components/about/MeetTeam";
+import { SectionLabel } from "../../Components/about/SectionLabel";
+import { ValueCard } from "../../Components/about/ValueCard";
+import { Reveal } from "../../Components/Reveal";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
