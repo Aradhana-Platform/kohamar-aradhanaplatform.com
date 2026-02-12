@@ -271,7 +271,7 @@ const Home = () => {
                     </svg>
                 </Link>
             </div>
-            <BlogCards />
+            {/* <BlogCards limit={3} /> */}
         </section>
 
         {/* explore topics */}

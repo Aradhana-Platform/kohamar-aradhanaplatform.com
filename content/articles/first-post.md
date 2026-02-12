@@ -9,7 +9,7 @@ image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200"
 readTime: "5 min read"
 ---
 
-# First Post
+### First Post
 
 यो मेरो पहिलो blog post हो 🚀
 
