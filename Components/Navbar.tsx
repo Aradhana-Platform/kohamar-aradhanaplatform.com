@@ -42,17 +42,42 @@ export default function Navbar() {
                                 Home
                             </Link>
                             <Link
+                                href="/about"
+                                className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
+                            >
+                                About
+                            </Link>
+                            <Link
                                 href="/articles"
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
                             >
                                 Articles
                             </Link>
                             <Link
-                                href="/about"
+                                href="/magazines"
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
                             >
-                                About
+                                Magazines
                             </Link>
+                            <Link
+                                href="/books"
+                                className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
+                            >
+                                Books
+                            </Link>
+                            <Link
+                                href="/songs"
+                                className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
+                            >
+                                Songs
+                            </Link>
+                            <Link
+                                href="/developer"
+                                className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
+                            >
+                                Developer Section
+                            </Link>
+
                         </div>
 
                         {/* Mobile Menu Button */}
