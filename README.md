@@ -63,3 +63,30 @@ flowchart TD
     E --> G[Markdown Content]
     E --> H[ShareSidebar]
 ```
+
+## Worship Songs Page
+
+### Overview
+The Worship Songs page is located at `app/songs/page.tsx` (using `SongsClient.tsx`). Individual song pages are at `app/songs/[slug]/page.tsx`.
+
+### Key Features
+- **YouTube Integration**: Automatically extracts video IDs and high-resolution thumbnails (`maxresdefault.jpg`) from YouTube URLs.
+- **Real-time Search**: Instant filtering by title, artist, or song description.
+- **Category Filtering**: Dynamic category chips for easy navigation.
+- **Auto-Play Playlist**: Sequential playback logic that automatically navigates to the next song when a video ends.
+- **Premium UI**: Modern hero section with animated gradients and exit animations via `framer-motion`.
+
+### Technical Implementation
+- **Data Source**: Markdown files in `content/songs/`.
+- **Thumbnail Handling**: Uses a robust ID extraction utility that handles multiple YouTube URL formats (watch, embed, shortened).
+- **Auto-Play**: Calculates an "Up Next" queue based on the current song's index in the global song list.
+- **Animations**: Utilizes `AnimatePresence` for smooth grid layout transitions during search/filter operations.
+
+```mermaid
+flowchart LR
+    A[Song List] --> B{Filter/Search}
+    B --> C[Grid View]
+    C --> D[Single Song Page]
+    D --> E[Video End Event]
+    E -->|Next Slug| D
+```

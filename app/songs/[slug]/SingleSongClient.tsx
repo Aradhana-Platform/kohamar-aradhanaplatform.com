@@ -5,21 +5,39 @@ import Image from "next/image"; // kept for non-youtube images if any
 import Link from "next/link";
 import YouTube from "react-youtube";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import type { Song } from "../../../lib/songs";
+
 
 const getYouTubeId = (url: string) => {
     if (!url) return "";
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : url;
+
+    // Decode HTML entities like &amp; to &
+    const decodedUrl = url.replace(/&amp;/g, '&');
+
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([a-zA-Z0-9_-]{11}).*/;
+    const match = decodedUrl.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : "";
 };
 
 export default function SingleSongClient({ song, allSongs }: { song: Song, allSongs: Song[] }) {
-    // We don't need complex state for "home vs watch" because this IS the watch page.
-    // We might add "mini player" logic if they navigate away, but for now, simple page.
+    const router = useRouter();
 
-    // Filter out current song from "Up Next"
-    const upNext = allSongs.filter(s => s.slug !== song.slug);
+    // Find current song index
+    const currentIndex = allSongs.findIndex(s => s.slug === song.slug);
+
+    // Create "Up Next" list: all songs after the current one, then wrap around to songs before it
+    const upNext = currentIndex !== -1
+        ? [...allSongs.slice(currentIndex + 1), ...allSongs.slice(0, currentIndex)]
+        : allSongs.filter(s => s.slug !== song.slug);
+
+    // Handle video end - auto-play next song
+    const handleVideoEnd = () => {
+        if (upNext.length > 0) {
+            // Navigate to the first song in the "Up Next" list
+            router.push(`/songs/${ upNext[0].slug }`);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-slate-50 font-sans text-slate-800 pb-20 pt-10">
@@ -30,7 +48,7 @@ export default function SingleSongClient({ song, allSongs }: { song: Song, allSo
                 - Up Next (Right on desktop, Bottom on mobile)
              */}
             {/* BACK BUTTON */}
-            <div className="max-w-7xl mx-auto px-4 lg:px-8 mb-4">
+            <div className="max-w-7xl lg:sticky lg:top-20 mx-auto px-4 lg:px-8 mb-4">
                 <Link href="/songs" className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm hover:shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -52,6 +70,7 @@ export default function SingleSongClient({ song, allSongs }: { song: Song, allSo
                                 width: '100%',
                                 playerVars: { autoplay: 1, rel: 0 },
                             }}
+                            onEnd={handleVideoEnd}
                             className="w-full h-full absolute inset-0"
                             iframeClassName="w-full h-full"
                         />
@@ -96,27 +115,35 @@ export default function SingleSongClient({ song, allSongs }: { song: Song, allSo
                 <div className="lg:col-span-1">
                     <h3 className="font-bold text-slate-800 mb-4 text-xl">Up Next</h3>
                     <div className="space-y-4">
-                        {upNext.map((nextSong) => (
-                            <Link
-                                key={nextSong.slug}
-                                href={`/songs/${ nextSong.slug }`}
-                                className="flex gap-3 group cursor-pointer hover:bg-slate-100 p-2 rounded-lg transition-colors"
-                            >
-                                <div className="relative w-40 aspect-video rounded-lg overflow-hidden bg-slate-200 flex-shrink-0">
-                                    <img
-                                        src={nextSong.image}
-                                        alt={nextSong.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                    />
-                                    <span className="absolute bottom-1 right-1 px-1 py-0.5 bg-black/80 text-white text-[10px] rounded font-medium">{nextSong.duration}</span>
-                                </div>
-                                <div className="flex flex-col min-w-0">
-                                    <h4 className="font-semibold text-sm line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">{nextSong.title}</h4>
-                                    <p className="text-xs text-slate-500 mt-1 truncate">{nextSong.artist}</p>
-                                    <p className="text-xs text-slate-500">{nextSong.category}</p>
-                                </div>
-                            </Link>
-                        ))}
+                        {upNext.map((nextSong) => {
+                            // Extract YouTube video ID from the video URL
+                            const videoId = getYouTubeId(nextSong.video);
+                            const thumbnailUrl = videoId
+                                ? `https://img.youtube.com/vi/${ videoId }/maxresdefault.jpg`
+                                : '';
+
+                            return (
+                                <Link
+                                    key={nextSong.slug}
+                                    href={`/songs/${ nextSong.slug }`}
+                                    className="flex gap-3 group cursor-pointer hover:bg-slate-100 p-2 rounded-lg transition-colors"
+                                >
+                                    <div className="relative w-40 aspect-video rounded-lg overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img
+                                            src={thumbnailUrl}
+                                            alt={nextSong.title}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                        />
+                                        <span className="absolute bottom-1 right-1 px-1 py-0.5 bg-black/80 text-white text-[10px] rounded font-medium">{nextSong.duration}</span>
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <h4 className="font-semibold text-sm line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">{nextSong.title}</h4>
+                                        <p className="text-xs text-slate-500 mt-1 truncate">{nextSong.artist}</p>
+                                        <p className="text-xs text-slate-500">{nextSong.category}</p>
+                                    </div>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
 
