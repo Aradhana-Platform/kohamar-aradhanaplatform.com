@@ -1,75 +1,94 @@
 "use client";
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function BlogCards() {
-    const articles = [
-        {
-            id: 1,
-            category: "Ethics",
-            categoryColor: "bg-purple-100 text-purple-700",
-            image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "8 min read",
-            title: "Christian Ethics in the Digital Age",
-            description: "How do ancient moral principles apply to social media, AI, and the challenges of our connected world?",
-            author: "Dr. Maria Santos"
-        },
-        {
-            id: 2,
-            category: "Biblical Studies",
-            categoryColor: "bg-teal-100 text-teal-700",
-            image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "6 min read",
-            title: "The Psalms: A School of Prayer",
-            description: "How Israel's ancient prayer book teaches us to bring every emotion—joy, anger, despair, and praise—before God.",
-            author: "Prof. Sarah Chen"
-        },
-        {
-            id: 3,
-            category: "Biblical Studies",
-            categoryColor: "bg-teal-100 text-teal-700",
-            image: "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "10 min read",
-            title: "The Gospel of John: Light in the Darkness",
-            description: "Exploring the unique theological vision of the Fourth Gospel and its profound message of divine light penetrating human...",
-            author: "Prof. Sarah Chen"
-        },
-        {
-            id: 4,
-            category: "Church History",
-            categoryColor: "bg-amber-100 text-amber-800",
-            image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "7 min read",
-            title: "The Reformation: Why It Still Matters",
-            description: "Five hundred years later, the Protestant Reformation's core insights continue to shape Christian faith and Western...",
-            author: "Rev. James Okonkwo"
-        },
-        {
-            id: 5,
-            category: "Church History",
-            categoryColor: "bg-amber-100 text-amber-800",
-            image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "7 min read",
-            title: "Augustine of Hippo: The Making of a Saint",
-            description: "From restless seeker to towering theologian—the remarkable journey of one of Christianity's most influential thinkers.",
-            author: "Rev. James Okonkwo"
-        },
-        {
-            id: 6,
-            category: "Apologetics",
-            categoryColor: "bg-rose-100 text-rose-700",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-            date: "Jan 25, 2026",
-            readTime: "9 min read",
-            title: "Faith and Science: Partners or Rivals?",
-            description: "Examining the relationship between religious faith and scientific inquiry, and why the 'conflict thesis' doesn't tell th...",
-            author: "Dr. Thomas Mitchell"
-        }
-    ];
+// components/PostList.tsx
+interface Post {
+    slug: string;
+    title: string;
+    date: string;
+    author: string;
+    category: string;
+    categoryColor: string;
+    image: string;
+    readTime: string;
+    description: string;
+}
+
+interface PostListProps {
+    posts: Post[];
+}
+
+export default function BlogCards({ posts }: PostListProps) {
+
+    // const articles = [
+    //     {
+    //         id: 1,
+    //         category: "Ethics",
+    //         categoryColor: "bg-purple-100 text-purple-700",
+    //         image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "8 min read",
+    //         title: "Christian Ethics in the Digital Age",
+    //         description: "How do ancient moral principles apply to social media, AI, and the challenges of our connected world?",
+    //         author: "Dr. Maria Santos"
+    //     },
+    //     {
+    //         id: 2,
+    //         category: "Biblical Studies",
+    //         categoryColor: "bg-teal-100 text-teal-700",
+    //         image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "6 min read",
+    //         title: "The Psalms: A School of Prayer",
+    //         description: "How Israel's ancient prayer book teaches us to bring every emotion—joy, anger, despair, and praise—before God.",
+    //         author: "Prof. Sarah Chen"
+    //     },
+    //     {
+    //         id: 3,
+    //         category: "Biblical Studies",
+    //         categoryColor: "bg-teal-100 text-teal-700",
+    //         image: "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "10 min read",
+    //         title: "The Gospel of John: Light in the Darkness",
+    //         description: "Exploring the unique theological vision of the Fourth Gospel and its profound message of divine light penetrating human...",
+    //         author: "Prof. Sarah Chen"
+    //     },
+    //     {
+    //         id: 4,
+    //         category: "Church History",
+    //         categoryColor: "bg-amber-100 text-amber-800",
+    //         image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "7 min read",
+    //         title: "The Reformation: Why It Still Matters",
+    //         description: "Five hundred years later, the Protestant Reformation's core insights continue to shape Christian faith and Western...",
+    //         author: "Rev. James Okonkwo"
+    //     },
+    //     {
+    //         id: 5,
+    //         category: "Church History",
+    //         categoryColor: "bg-amber-100 text-amber-800",
+    //         image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "7 min read",
+    //         title: "Augustine of Hippo: The Making of a Saint",
+    //         description: "From restless seeker to towering theologian—the remarkable journey of one of Christianity's most influential thinkers.",
+    //         author: "Rev. James Okonkwo"
+    //     },
+    //     {
+    //         id: 6,
+    //         category: "Apologetics",
+    //         categoryColor: "bg-rose-100 text-rose-700",
+    //         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    //         date: "Jan 25, 2026",
+    //         readTime: "9 min read",
+    //         title: "Faith and Science: Partners or Rivals?",
+    //         description: "Examining the relationship between religious faith and scientific inquiry, and why the 'conflict thesis' doesn't tell th...",
+    //         author: "Dr. Thomas Mitchell"
+    //     }
+    // ];
 
     return (
         <section className="">
@@ -78,15 +97,15 @@ export default function BlogCards() {
 
                 {/* Articles Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {articles.map((article) => (
+                    {posts.map((article) => (
                         <article
-                            key={article.id}
+                            key={article.slug}
                             className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
                         >
                             {/* Image */}
                             <div className="relative h-64 overflow-hidden">
                                 <Image
-                                    src={article.image}
+                                    src={article.image || "/images/default-post.jpg"}
                                     alt={article.title}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     width={400}
@@ -156,7 +175,7 @@ export default function BlogCards() {
                                     <span className="text-sm text-slate-700">
                                         By {article.author}
                                     </span>
-                                    <button className="group/btn inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors">
+                                    <Link href={`/articles/${ article.slug }`} className="group/btn inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors">
                                         <span>Read More</span>
                                         <svg
                                             className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
@@ -171,7 +190,7 @@ export default function BlogCards() {
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                                             />
                                         </svg>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </article>

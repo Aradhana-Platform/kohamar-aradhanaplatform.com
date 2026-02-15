@@ -35,28 +35,58 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-# Additional Documentation
-
 ## Dynamic Article Page
 
 ### Overview
-The dynamic article page is located at `src/app/articles/[id]/page.tsx`. It is responsible for rendering individual articles based on their unique ID.
+The dynamic article page is located at `app/articles/[slug]/page.tsx`. It is responsible for rendering individual articles based on their unique slug, fetching content from Markdown files in `content/articles/`.
 
 ### Key Features
-- Fetches article data dynamically using the `id` parameter.
-- Displays the article content and includes a footer for navigation.
+- **Markdown Support**: Renders articles written in Markdown using `react-markdown`.
+- **Dynamic Routing**: Uses Next.js dynamic routes `[slug]` to match article URLs.
+- **Server-Side Rendering**: Fetches data on the server using `fs` (via `lib/posts.ts`) for optimal performance and SEO.
+- **Component Architecture**: 
+  - `ShareSidebar` (Client Component) for social sharing.
+  - `ArticleUI` (Server Components) for consistent design elements.
 
-### Error Handling
-- Handles invalid or missing article IDs gracefully.
-- Displays a fallback message if the article is not found.
-
-### Example Usage
-Navigate to `/articles/{id}` to view a specific article.
+### Data Fetching
+Articles are stored as `.md` files in `content/articles`. The `getPostBySlug` function reads the file, parses frontmatter (title, date, author, etc.), and passes the content to the page.
 
 ### Mermaid Diagram
 ```mermaid
 flowchart TD
-A[Dynamic Article Page] --> B[Fetch Article Data]
-B --> C[Render Article Content]
-C --> D[Footer Component]
+    A[User Request /articles/my-post] --> B[app/articles/[slug]/page.tsx]
+    B --> C{getPostBySlug}
+    C -->|Read file| D[content/articles/my-post.md]
+    D -->|Return Data| B
+    B --> E[Render Page]
+    E --> F[Article Header & Hero]
+    E --> G[Markdown Content]
+    E --> H[ShareSidebar]
+```
+
+## Worship Songs Page
+
+### Overview
+The Worship Songs page is located at `app/songs/page.tsx` (using `SongsClient.tsx`). Individual song pages are at `app/songs/[slug]/page.tsx`.
+
+### Key Features
+- **YouTube Integration**: Automatically extracts video IDs and high-resolution thumbnails (`maxresdefault.jpg`) from YouTube URLs.
+- **Real-time Search**: Instant filtering by title, artist, or song description.
+- **Category Filtering**: Dynamic category chips for easy navigation.
+- **Auto-Play Playlist**: Sequential playback logic that automatically navigates to the next song when a video ends.
+- **Premium UI**: Modern hero section with animated gradients and exit animations via `framer-motion`.
+
+### Technical Implementation
+- **Data Source**: Markdown files in `content/songs/`.
+- **Thumbnail Handling**: Uses a robust ID extraction utility that handles multiple YouTube URL formats (watch, embed, shortened).
+- **Auto-Play**: Calculates an "Up Next" queue based on the current song's index in the global song list.
+- **Animations**: Utilizes `AnimatePresence` for smooth grid layout transitions during search/filter operations.
+
+```mermaid
+flowchart LR
+    A[Song List] --> B{Filter/Search}
+    B --> C[Grid View]
+    C --> D[Single Song Page]
+    D --> E[Video End Event]
+    E -->|Next Slug| D
 ```
