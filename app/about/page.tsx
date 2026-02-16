@@ -45,7 +45,7 @@ export default function AboutPage() {
                         transition: "opacity 1s .05s cubic-bezier(.22,1,.36,1), transform 1s .05s cubic-bezier(.22,1,.36,1)",
                     }}
                 >
-                    <SectionLabel>About Us</SectionLabel>
+                    <SectionLabel>our Mission</SectionLabel>
 
                     <h1
                         className="text-white font-light leading-none py-2"
@@ -55,7 +55,7 @@ export default function AboutPage() {
                     </h1>
 
                     <p className="mt-5 text-xl w-full leading-relaxed" style={{ color: "rgba(255,255,255,0.72)", fontFamily: "sans-serif" }}>
-                        Theologica exists to make profound theological insights accessible to all, bridging the gap between academic scholarship and everyday faith.
+                        Theology exists to make profound theological insights accessible to all, bridging the gap between academic scholarship and everyday faith.
                     </p>
                 </div>
             </section>
@@ -67,20 +67,20 @@ export default function AboutPage() {
                     {/* ── text column ── */}
                     <Reveal>
                         <div>
-                            <SectionLabel>Our Purpose</SectionLabel>
+                            <SectionLabel>About me</SectionLabel>
                             <h2
                                 className="font-normal leading-tight"
                                 style={{ color: T.navy, fontSize: "clamp(1.7rem, 3.4vw, 2.3rem)", fontFamily: "Georgia, serif" }}
                             >
-                                Illuminating Faith<br />Through Understanding
+                                Academic Dean of Nepal Theological College
                             </h2>
 
                             <p className="mt-6 text-base leading-relaxed" style={{ color: T.gray700, fontFamily: "Georgia, serif" }}>
-                                Founded in 2020, Theologica emerged from a simple conviction: that the rich traditions of Christian theology should not remain locked away in academic institutions, but should be made available to anyone seeking to deepen their understanding of faith.
+                                Amar Pandey is Academic Dean of Nepal Theological College. He has received theological training in the UK, India, and the Philippines. In addition to teaching, preaching, and writing, Amar likes to hike the beautiful hills of Nepal. Although neither a poet/litterateur nor a person trained in music, he enjoys songwriting occasionally. Amar lives in Kathmandu with his wife and two children.
                             </p>
-                            <p className="mt-4 text-base leading-relaxed" style={{ color: T.gray700, fontFamily: "Georgia, serif" }}>
+                            {/* <p className="mt-4 text-base leading-relaxed" style={{ color: T.gray700, fontFamily: "Georgia, serif" }}>
                                 Our team of scholars, pastors, and writers work together to present complex theological concepts in clear, engaging language—without sacrificing depth or accuracy.
-                            </p>
+                            </p> */}
                         </div>
                     </Reveal>
 
@@ -133,7 +133,7 @@ export default function AboutPage() {
             <section className="bg-white" style={{ padding: "88px 6vw 96px" }}>
                 <Reveal>
                     <div className="text-center mb-13">
-                        <SectionLabel>The People Behind Theologica</SectionLabel>
+                        <SectionLabel>The People Behind Theological</SectionLabel>
                         <h2 className="font-normal" style={{ color: T.navy, fontSize: "clamp(1.7rem, 3.2vw, 2.2rem)", fontFamily: "Georgia, serif" }}>
                             Meet Our Team
                         </h2>
