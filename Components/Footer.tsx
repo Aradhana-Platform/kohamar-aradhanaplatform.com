@@ -37,7 +37,7 @@ const Footer = () => {
                     </div>
 
                     <div className="border-t border-gray-800 pt-6 text-center text-gray-700 text-sm">
-                        © 2026 Your Company. All rights reserved.
+                        © 2026 Aradhana Platform. All rights reserved.
                     </div>
                 </div>
             </footer>

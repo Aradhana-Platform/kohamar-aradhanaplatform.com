@@ -13,24 +13,11 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <div className="flex items-center gap-3 group cursor-pointer">
-                            <div className="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                                <svg
-                                    className="w-6 h-6 text-white"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                    />
-                                </svg>
+                            <div className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                                <img src="logo.jpeg" alt="" className='h-full w-full object-cover' />
+                                {/* <img src="lgo.jpg" alt="" className='bg-[#1B388C]' /> */}
+
                             </div>
-                            <span className="text-2xl text-slate-800" style={{ fontFamily: "'Libre Baskerville', serif" }}>
-                                Theological
-                            </span>
                         </div>
 
                         {/* Desktop Menu */}
@@ -71,12 +58,12 @@ export default function Navbar() {
                             >
                                 Songs
                             </Link>
-                            <Link
+                            {/* <Link
                                 href="/developer"
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
                             >
                                 Developer Section
-                            </Link>
+                            </Link> */}
 
                         </div>
 
@@ -111,20 +98,39 @@ export default function Navbar() {
                                 Home
                             </Link>
                             <Link
+                                href="/about"
+                                className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                            >
+                                About
+                            </Link>
+                            <Link
                                 href="/articles"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
                             >
                                 Articles
                             </Link>
                             <Link
-                                href="/about"
+                                href="/magazines"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
                             >
-                                About
+                                Magazines
+                            </Link>
+                            <Link
+                                href="/books"
+                                className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                            >
+                                Books
+                            </Link>
+                            <Link
+                                href="/songs"
+                                className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                            >
+                                Songs
                             </Link>
                         </div>
                     )}
                 </div>
+                {/* </div> */}
             </nav>
 
 
