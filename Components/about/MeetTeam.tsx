@@ -6,7 +6,7 @@ export function TeamCard({ name, role, bio, hue }: TeamMember) {
     const initials = name
         .split(" ")
         .filter(Boolean)
-        .map((w: any) => w[0])
+        .map((w: string) => w[0])
         .join("")
         .slice(0, 2)
         .toUpperCase();

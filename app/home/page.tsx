@@ -184,7 +184,7 @@ const Home = () => {
 
                         {/* Description */}
                         <p className="text-slate-600 text-lg lg:text-lg leading-relaxed">
-                            The doctrine of the Trinity stands as one of Christianity's most profound mysteries—one God existing eternally as three distinct persons: Father, Son, and Holy Spirit.
+                            The doctrine of the Trinity stands as one of Christianity&apos;s most profound mysteries—one God existing eternally as three distinct persons: Father, Son, and Holy Spirit.
                         </p>
 
                         {/* Meta Information */}

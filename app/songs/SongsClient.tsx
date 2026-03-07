@@ -33,15 +33,6 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
 
-    // Fallback if no videos found
-    if (!initialVideos || initialVideos.length === 0) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">
-                <p>No songs found.</p>
-            </div>
-        )
-    }
-
     const filteredVideos = useMemo(() => {
         return initialVideos.filter(v => {
             const matchesCategory = selectedCategory === "All" || v.category === selectedCategory;
@@ -53,6 +44,15 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
     }, [initialVideos, selectedCategory, searchQuery]);
 
     const categories = ['All', ...Array.from(new Set(initialVideos.map(v => v.category)))];
+
+    // Fallback if no videos found
+    if (!initialVideos || initialVideos.length === 0) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">
+                <p>No songs found.</p>
+            </div>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-white font-sans text-slate-800 pb-20 relative">

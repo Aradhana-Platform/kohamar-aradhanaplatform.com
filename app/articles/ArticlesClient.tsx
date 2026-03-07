@@ -69,7 +69,7 @@ interface Post {
     description: string;
 }
 
-export default function ArticlesClient({ posts }: { posts: any[] }) {
+export default function ArticlesClient({ posts }: { posts: Post[] }) {
     const [active, setActive] = useState("all");
     const [query, setQuery] = useState("");
     const [mounted, setMounted] = useState(false);

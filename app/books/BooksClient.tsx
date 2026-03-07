@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { Book } from "../../lib/books";
 import { BookOpen, User, Tag, ArrowRight, ShoppingCart } from "lucide-react";
@@ -11,7 +11,7 @@ interface BooksClientProps {
 }
 
 export default function BooksClient({ books }: BooksClientProps) {
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -21,7 +21,7 @@ export default function BooksClient({ books }: BooksClientProps) {
         },
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         hidden: { y: 20, opacity: 0 },
         visible: {
             y: 0,
