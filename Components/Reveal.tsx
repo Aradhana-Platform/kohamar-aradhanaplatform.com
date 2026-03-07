@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function useInView(threshold = 0.18) {
+function useInView(threshold = 0.18): [React.RefObject<HTMLDivElement | null>, boolean] {
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
 
@@ -15,7 +15,7 @@ function useInView(threshold = 0.18) {
         return () => obs.disconnect();
     }, [threshold]);
 
-    return [ref, visible] as const;
+    return [ref, visible];
 }
 
 /** Wrapper that fades + slides in when scrolled into view */
