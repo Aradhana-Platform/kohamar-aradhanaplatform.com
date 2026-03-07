@@ -10,10 +10,9 @@ import { useState, useEffect } from "react";
 
 
 const TEAM: TeamMember[] = [
-    { name: "Dr. Thomas Mitchell", role: "Founding Editor & Systematic Theology", bio: "PhD in Theology from Oxford University with 20+ years of teaching experience.", hue: 210 },
-    { name: "Prof. Sarah Chen", role: "Biblical Studies Editor", bio: "Professor of New Testament at Gordon-Conwell Theological Seminary.", hue: 30 },
-    { name: "Rev. James Okonkwo", role: "Church History Contributor", bio: "Ordained minister and church historian specializing in African Christianity.", hue: 160 },
-    { name: "Dr. Maria Santos", role: "Ethics & Applied Theology", bio: "Research fellow exploring the intersection of faith and contemporary ethics.", hue: 340 },
+    { name: "Bijay B.K", role: "Software Developer", bio: "Founder at Aradhana Platform & The WebSpace", hue: 210 },
+    // name:Bardan Nepali,Develper
+    { name: "Bardan Nepali", role: "Software Develper", bio: "Software Developer at The WebSpace (Technical team of Aradhana Platform)", hue: 210 },
 ];
 
 export default function AboutPage() {
