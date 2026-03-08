@@ -13,11 +13,11 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <div className="flex items-center gap-3 group cursor-pointer">
-                            <div className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                                <img src="logo.jpeg" alt="" className='h-full w-full object-cover' />
+                            <Link href="/" className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                                <img src="logo.jpg" alt="" className='h-full w-full object-cover' />
                                 {/* <img src="lgo.jpg" alt="" className='bg-[#1B388C]' /> */}
 
-                            </div>
+                            </Link>
                         </div>
 
                         {/* Desktop Menu */}

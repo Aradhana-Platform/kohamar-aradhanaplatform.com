@@ -40,7 +40,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     margin: "0 auto",
                     padding: "28px 6vw 32px",
                 }}>
-                    <div style={{ marginBottom: 20 }}>
+                    <div style={{ marginBottom: 20, paddingTop: 20 }}>
                         <BackButton />
                     </div>
 
