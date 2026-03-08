@@ -1,12 +1,17 @@
 
-"use client";
+// "use client";
 import BlogCards from '../../Components/BlogCards';
 import Category from '../../Components/Category';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import ArticlePost from './ArticlePost';
+// import { getAllPosts } from '../../lib/posts';
 
 const Home = () => {
+    // const posts = getAllPosts();
+
+
     return (<>
         <div className=" bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
             {/* Decorative Background Pattern */}
@@ -39,13 +44,13 @@ const Home = () => {
                             className="text-5xl sm:text-6xl lg:text-7xl xl:text-6xl text-white leading-tight mb-4"
                             style={{ fontFamily: "'Libre Baskerville', serif" }}
                         >
-                            Deepening Understanding
+                            כה אמר
                         </div>
                         <div
                             className="text-5xl sm:text-6xl lg:text-7xl xl:text-6xl text-amber-400 leading-tight italic"
                             style={{ fontFamily: "'Libre Baskerville', serif" }}
                         >
-                            Through Theology
+                            Thinking Scripturally
                         </div>
                     </h1>
 
@@ -271,7 +276,8 @@ const Home = () => {
                     </svg>
                 </Link>
             </div>
-            {/* <BlogCards limit={3} /> */}
+            <ArticlePost />
+            {/* <BlogCards posts={posts} /> */}
         </section>
 
         {/* explore topics */}

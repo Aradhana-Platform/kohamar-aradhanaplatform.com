@@ -98,7 +98,7 @@ export default function BlogCards({ posts }: PostListProps) {
                 {/* Articles Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.map((article) => (
-                        <article
+                        <Link href={`/articles/${ article.slug }`}
                             key={article.slug}
                             className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
                         >
@@ -175,7 +175,7 @@ export default function BlogCards({ posts }: PostListProps) {
                                     <span className="text-sm text-slate-700">
                                         By {article.author}
                                     </span>
-                                    <Link href={`/articles/${ article.slug }`} className="group/btn inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors">
+                                    <div className="group/btn inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors">
                                         <span>Read More</span>
                                         <svg
                                             className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
@@ -190,10 +190,10 @@ export default function BlogCards({ posts }: PostListProps) {
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                                             />
                                         </svg>
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </article>
+                        </Link>
                     ))}
                 </div>
             </div>
