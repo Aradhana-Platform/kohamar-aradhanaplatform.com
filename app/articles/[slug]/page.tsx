@@ -26,6 +26,14 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     const readTime = post.frontmatter.readTime || "5 min read";
     const image = post.frontmatter.image;
 
+
+    // share btn:
+    const linkUrl = `https://kohamar-aradhanaplatform.com/articles`;
+
+    // const blog = post;
+    const blogTitle = title;
+    const blogUrl = `${ linkUrl }/${ slug }`;
+
     return (
         <div style={{
             minHeight: "100vh",
@@ -78,7 +86,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             <div className="mx-auto max-w-[1400px] md:max-w-[1200px] grid grid-cols-[10px_1fr] md:grid-cols-[80px_1fr] gap-13 md:gap-12 px-[3vw] md:px-[6vw] pt-12">
                 {/* left sidebar – share */}
                 <div>
-                    <ShareSidebar />
+                    <ShareSidebar url={blogUrl} blogTitle={blogTitle} />
                 </div>
 
                 {/* main content column */}
