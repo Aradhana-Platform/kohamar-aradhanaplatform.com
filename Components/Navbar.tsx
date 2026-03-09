@@ -5,6 +5,10 @@ import React, { useState } from 'react';
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
+    const handleClose = () => {
+        setMobileMenuOpen(false);
+    }
+
     return (
         <div>
             {/* Navigation */}
@@ -14,9 +18,7 @@ export default function Navbar() {
                         {/* Logo */}
                         <div className="flex items-center gap-3 group cursor-pointer">
                             <Link href="/" className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                                <img src="logo.jpg" alt="" className='h-full w-full object-cover' />
-                                {/* <img src="lgo.jpg" alt="" className='bg-[#1B388C]' /> */}
-
+                                <img src="/logo.jpg" alt="kohamar logo" className='h-full w-full object-cover' />
                             </Link>
                         </div>
 
@@ -94,36 +96,42 @@ export default function Navbar() {
                             <Link
                                 href="/"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 Home
                             </Link>
                             <Link
                                 href="/about"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 About
                             </Link>
                             <Link
                                 href="/articles"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 Articles
                             </Link>
                             <Link
                                 href="/magazines"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 Magazines
                             </Link>
                             <Link
                                 href="/books"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 Books
                             </Link>
                             <Link
                                 href="/songs"
                                 className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
                             >
                                 Songs
                             </Link>

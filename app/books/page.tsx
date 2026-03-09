@@ -1,6 +1,5 @@
 import React from "react";
 import { getAllBooks } from "../../lib/books";
-import Navbar from "../../Components/Navbar";
 import BooksClient from "./BooksClient";
 
 export default async function BooksPage() {
@@ -8,7 +7,6 @@ export default async function BooksPage() {
 
     return (
         <>
-            <Navbar />
             <BooksClient books={books} />
         </>
     );
