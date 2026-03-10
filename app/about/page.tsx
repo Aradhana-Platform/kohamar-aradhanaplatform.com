@@ -23,18 +23,18 @@ export default function AboutPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-50" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+        <div className="min-h-screen" style={{ fontFamily: "Georgia, 'Times New Roman', serif", background: `linear-gradient(148deg, #101c39 0%, #1c388b 50%, #101c39 100%)` }}>
             {/* hero section */}
             <section
-                className="relative overflow-hidden flex items-center"
+                className="relative overflow-hidden flex items-center max-w-7xl mx-auto"
                 style={{
-                    background: `linear-gradient(148deg, ${ T.navyLight } 0%, ${ T.navy } 50%, #162236 100%)`,
+
                     minHeight: 280,
                     padding: "90px 6vw",
                 }}
             >
                 {/* subtle radial glow */}
-                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 70% 50%, rgba(100,140,190,0.12) 0%, transparent 70%)" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 70% 50%, rgb(27, 56, 140) 0%, transparent 70%)" }} />
 
                 <div
                     className="relative z-10 max-w-xl"

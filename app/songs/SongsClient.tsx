@@ -58,10 +58,10 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
         <div className="min-h-screen bg-white font-sans text-slate-800 pb-20 relative">
 
             {/* Hero Section */}
-            <div className="relative pt-18 pb-8 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+            <div className="relative pt-18 pb-8 bg-gradient-to-b from-#1c388b-50 to-white overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-40">
-                    <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-200 rounded-full blur-[100px]" />
-                    <div className="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-purple-100 rounded-full blur-[80px]" />
+                    <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-[#1c388b] rounded-full blur-[100px]" />
+                    <div className="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-[#1c388b] rounded-full blur-[80px]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
@@ -72,7 +72,7 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                         className="text-center mb-8"
                     >
                         <h1 className="text-4xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-                            Worship <span className="text-blue-600">Songs</span>
+                            Worship <span className="text-[#1c388b]">Songs</span>
                         </h1>
                         <p className="text-slate-600 max-w-2xl mx-auto text-md">
                             Discover and sing along to your favorite worship songs. Explore our collection of spiritual melodies and lyrics.
@@ -88,7 +88,7 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                     >
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-400 group-focus-within:text-[#1c388b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
@@ -97,7 +97,7 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                                 placeholder="Search by title, artist, or lyrics..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-12 py-4 bg-white border border-slate-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-800 placeholder-slate-400"
+                                className="w-full pl-12 pr-12 py-4 bg-white border border-slate-200 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-[#1c388b] focus:border-transparent transition-all text-slate-800 placeholder-slate-400"
                             />
                             {searchQuery && (
                                 <button
@@ -122,7 +122,7 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${ cat === selectedCategory ? 'bg-blue-600 text-white shadow-blue-200' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-100' }`}
+                                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${ cat === selectedCategory ? 'bg-[#1c388b] text-white shadow-[#1c388b]/20' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-100' }`}
                             >
                                 {cat}
                             </button>
@@ -182,11 +182,11 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                                                 <span className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-md text-white text-[10px] rounded-md font-bold uppercase tracking-wider">{video.duration}</span>
                                             </div>
                                             <div className="flex gap-3 px-1">
-                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">
+                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1c388b] to-[#101c39] text-white flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">
                                                     {video.artist.charAt(0)}
                                                 </div>
                                                 <div className="flex flex-col min-w-0">
-                                                    <h3 className="font-bold text-slate-900 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors uppercase tracking-tight text-[14px]">{video.title}</h3>
+                                                    <h3 className="font-bold text-slate-900 line-clamp-2 leading-tight group-hover:text-[#1c388b] transition-colors uppercase tracking-tight text-[14px]">{video.title}</h3>
                                                     <p className="text-sm text-slate-500 mt-1 hover:text-slate-700 truncate font-medium">{video.artist}</p>
                                                 </div>
                                             </div>

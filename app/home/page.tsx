@@ -245,9 +245,9 @@ const Home = () => {
         </section>
 
         {/* blog cards */}
-        <section className='py-28 px-6 lg:px-12 bg-white min-h-screen'>
+        <section className='container mx-auto py-24 px-6 bg-white'>
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4 max-w-7xl mx-auto">
                 <div>
                     <p className="text-amber-600 uppercase tracking-widest text-xs font-semibold mb-2">
                         Latest Writings

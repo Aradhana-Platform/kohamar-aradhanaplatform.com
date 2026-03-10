@@ -106,7 +106,8 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                background: "linear-gradient(148deg, #2c3e5a 0%, #1e2d44 42%, #243548 72%, #2a3f5f 100%)",
+                // background: "linear-gradient(148deg, #2c3e5a 0%, #1e2d44 42%, #243548 72%, #2a3f5f 100%)",
+                background: `linear-gradient(148deg, #101c39 10%, #1c388b 50%, #101c39 100%)`,
                 overflow: "hidden",
                 padding: "64px 24px",
             }}>
@@ -164,9 +165,9 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                                 paddingRight: 20,
                                 fontSize: "1rem",
                                 fontFamily: "inherit",
-                                color: "#374151",
+                                color: "#101c39",
                                 background: "#fff",
-                                border: `1.5px solid ${ focusSearch ? "#1e2d44" : "#e2e5ea" }`,
+                                border: `1.5px solid ${ focusSearch ? "#1c388b" : "#e2e5ea" }`,
                                 borderRadius: 999,
                                 outline: "none",
                                 boxSizing: "border-box",
@@ -198,9 +199,9 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                                         fontSize: "0.91rem",
                                         fontFamily: "inherit",
                                         cursor: "pointer",
-                                        background: on ? "#1e2d44" : "#fff",
-                                        color: on ? "#fff" : "#374151",
-                                        border: `1.5px solid ${ on ? "#1e2d44" : "#e2e5ea" }`,
+                                        background: on ? "#1c388b" : "#fff",
+                                        color: on ? "#fff" : "#101c39",
+                                        border: `1.5px solid ${ on ? "#1c388b" : "#e2e5ea" }`,
                                         boxShadow: on ? "0 2px 10px rgba(30,45,68,0.28)" : "0 1px 4px rgba(0,0,0,0.065)",
                                         /* staggered reveal */
                                         opacity: mounted ? 1 : 0,
@@ -212,8 +213,8 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                                     }}
                                     onMouseEnter={e => {
                                         if (!on) {
-                                            e.currentTarget.style.borderColor = "#1e2d44";
-                                            e.currentTarget.style.boxShadow = "0 2px 8px rgba(30,45,68,0.14)";
+                                            e.currentTarget.style.borderColor = "#1c388b";
+                                            e.currentTarget.style.boxShadow = "0 2px 8px #1c388b/90";
                                         }
                                     }}
                                     onMouseLeave={e => {
