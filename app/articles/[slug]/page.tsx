@@ -28,7 +28,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
 
 
     // share btn:
-    const linkUrl = `https://kohamar-aradhanaplatform.com/articles`;
+    const linkUrl = `https://kohamar.aradhanaplatform.com/articles`;
 
     // const blog = post;
     const blogTitle = title;

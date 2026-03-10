@@ -90,3 +90,6 @@ flowchart LR
     D --> E[Video End Event]
     E -->|Next Slug| D
 ```
+
+#1c388b => light
+#101c39 => dark
