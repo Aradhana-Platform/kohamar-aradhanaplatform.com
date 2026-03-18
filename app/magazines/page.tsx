@@ -1,5 +1,5 @@
 import React from 'react'
-import MagazineCard from '../../components/MagazineCard'
+import MagazineCard from '../../Components/MagazineCard'
 import { getAllPosts } from '../../lib/magazine';
 
 
