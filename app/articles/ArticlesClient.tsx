@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import BlogCards from "../../Components/BlogCards";
+import BlogCards from "../../components/BlogCards";
 
 /* ─── Inline SVG Icons ─────────────────────────────────────────────────────── */
 const SparklesIcon = () => (
@@ -89,8 +89,8 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
 
     const filteredPosts = posts.filter(post => {
         const matchesCategory = active === "all" || (post.category && post.category.toLowerCase().replace(" ", "-") === active);
-        const matchesQuery = post.title.toLowerCase().includes(query.toLowerCase()) ||
-            (post.description && post.description.toLowerCase().includes(query.toLowerCase()));
+        const matchesQuery = post.title?.toLowerCase().includes(query.toLowerCase()) ||
+            (post.description?.toLowerCase().includes(query.toLowerCase()));
         return matchesCategory && matchesQuery;
     });
 

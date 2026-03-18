@@ -24,7 +24,7 @@ export function getAllSongs(): Song[] {
     const files = fs.readdirSync(songsDirectory);
 
     return files.map((file) => {
-        const slug = file.replace(".md", ""); // Derive slug from filename
+        const slug = file.replace(".mdx", ""); // Derive slug from filename
         const fullPath = path.join(songsDirectory, file);
         const fileContent = fs.readFileSync(fullPath, "utf-8");
         const { data } = matter(fileContent);
@@ -45,7 +45,7 @@ export function getAllSongs(): Song[] {
 
 export function getSongBySlug(slug: string): Song | null {
     try {
-        const fullPath = path.join(songsDirectory, `${slug}.md`);
+        const fullPath = path.join(songsDirectory, `${slug}.mdx`);
         const fileContent = fs.readFileSync(fullPath, "utf-8");
         const { data } = matter(fileContent);
 

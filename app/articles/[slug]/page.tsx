@@ -1,7 +1,6 @@
-
 import { getPostBySlug } from "../../../lib/posts";
-import ReactMarkdown from "react-markdown";
-import ShareSidebar from "../../../Components/ShareSidebar";
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import ShareSidebar from "../../../components/ShareSidebar";
 import {
     BackButton,
     CategoryBadge,
@@ -12,10 +11,12 @@ import {
     Calendar,
     Clock,
     C
-} from "../../../Components/ArticleUI";
+} from "../../../components/ArticleUI";
+import { TextDesign } from "../../../components/mdx-components/TextDesign";
 
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
+    const slug = (await params).slug;
+    // console.log('slug = ' + slug);
     const post = getPostBySlug(slug);
 
     // Fallback constants if frontmatter is missing
@@ -89,19 +90,14 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     <ShareSidebar url={blogUrl} blogTitle={blogTitle} />
                 </div>
 
+
                 {/* main content column */}
-                <div className="md:max-w-[900] text-justify prose prose-lg prose-slate max-w-none">
+                <div className="prose prose-lg prose-slate max-w-none">
                     {post.frontmatter.description && (
                         <PullQuote>{post.frontmatter.description}</PullQuote>
                     )}
-                    <ReactMarkdown
-                        components={{
-                            // Custom components mapping if needed, e.g. for images or custom styles
-                            // h1: ({node, ...props}) => <h1 style={{...}} {...props} />,
-                        }}
-                    >
-                        {post.content}
-                    </ReactMarkdown>
+
+                    <MDXRemote source={post.content} components={{ ...TextDesign }} />
                 </div>
             </div>
         </div>
