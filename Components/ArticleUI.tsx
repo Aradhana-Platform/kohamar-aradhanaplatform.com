@@ -133,7 +133,7 @@ export function HeroImage({ src, alt }: { src?: string, alt?: string }) {
             {/* statue silhouette hints (scales + figure) */}
             <div style={{ position: "absolute", top: "18%", right: "38%", width: "14%", height: "48%", opacity: 0.35 }}>
                 {/* figure body */}
-                <div style={{ position: "absolute", left: "38%", top: "22%", width: "24%", height: "62%", background: "linear-gradient(to bottom, #a89070 0%, #8b7355 100%)", borderRadius: "12px 12px 24px 24px" }} />
+                <div style={{ position: "absolute", left: "38%", top: "22%", width: "24%", height: "62%", background: "linear-gradient(to bottom, #70a87dff 0%, #8b7355 100%)", borderRadius: "12px 12px 24px 24px" }} />
                 {/* head */}
                 <div style={{ position: "absolute", left: "40%", top: "8%", width: "20%", height: "18%", background: "#a89070", borderRadius: "50%" }} />
                 {/* raised arm holding scales */}
@@ -151,7 +151,7 @@ export function HeroImage({ src, alt }: { src?: string, alt?: string }) {
                 position: "absolute", inset: 0, opacity: 0.08, pointerEvents: "none",
                 backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
             }} />
-        </div>
+        </div >
     );
 }
 

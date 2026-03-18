@@ -22,9 +22,9 @@ export function getAllBooks(): Book[] {
   const files = fs.readdirSync(booksDirectory);
 
   return files
-    .filter((file) => file.endsWith(".md"))
+    .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
-      const slug = file.replace(".md", "");
+      const slug = file.replace(".mdx", "");
       const fullPath = path.join(booksDirectory, file);
       const fileContent = fs.readFileSync(fullPath, "utf-8");
       const { data } = matter(fileContent);
@@ -43,7 +43,7 @@ export function getAllBooks(): Book[] {
 }
 
 export function getBookBySlug(slug: string) {
-  const fullPath = path.join(booksDirectory, `${slug}.md`);
+  const fullPath = path.join(booksDirectory, `${slug}.mdx`);
   if (!fs.existsSync(fullPath)) {
     return null;
   }

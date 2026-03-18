@@ -1,7 +1,7 @@
 
 // "use client";
-import BlogCards from '../../Components/BlogCards';
-import Category from '../../Components/Category';
+import BlogCards from '../../components/BlogCards';
+import Category from '../../components/Category';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
