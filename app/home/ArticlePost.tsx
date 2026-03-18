@@ -1,4 +1,4 @@
-import BlogCards from "../../components/BlogCards";
+import BlogCards from "../../Components/BlogCards";
 import { getAllPosts } from "../../lib/posts";
 
 

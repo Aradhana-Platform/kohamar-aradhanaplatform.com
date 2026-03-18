@@ -1,6 +1,6 @@
 import { getPostBySlug } from "../../../lib/posts";
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import ShareSidebar from "../../../components/ShareSidebar";
+import ShareSidebar from "../../../Components/ShareSidebar";
 import {
     BackButton,
     CategoryBadge,
@@ -11,8 +11,8 @@ import {
     Calendar,
     Clock,
     C
-} from "../../../components/ArticleUI";
-import { TextDesign } from "../../../components/mdx-components/TextDesign";
+} from "../../../Components/ArticleUI";
+import { TextDesign } from "../../../Components/mdx-components/TextDesign";
 
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const slug = (await params).slug;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import BlogCards from "../../components/BlogCards";
+import BlogCards from "../../Components/BlogCards";
 
 /* ─── Inline SVG Icons ─────────────────────────────────────────────────────── */
 const SparklesIcon = () => (
