@@ -24,7 +24,7 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                 >
                     <Link
                         href="/books"
-                        className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 font-medium transition-colors"
+                        className="inline-flex items-center gap-2 text-slate-600 hover:text-[#1c388b] font-medium transition-colors"
                     >
                         <ArrowLeft size={20} /> Back to Collection
                     </Link>
@@ -45,7 +45,7 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                                 alt={book.title}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute top-4 right-4 bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold text-lg shadow-lg">
+                            <div className="absolute top-4 right-4 bg-gradient-to-br from-[#1c388b] to-[#101c39] text-white px-4 py-1.5 rounded-lg font-bold text-lg shadow-lg">
                                 {book.price}
                             </div>
                         </div>
@@ -72,7 +72,7 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="md:col-span-7 lg:col-span-8 flex flex-col"
                     >
-                        <div className="flex items-center gap-2 text-blue-600 text-sm font-bold uppercase tracking-widest mb-4">
+                        <div className="flex items-center gap-2 text-[#1c388b] text-sm font-bold uppercase tracking-widest mb-4">
                             <Tag size={16} /> {book.category}
                         </div>
                         <h1
