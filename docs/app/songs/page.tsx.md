@@ -1,35 +1,59 @@
-# Documentation for `page.tsx` (Songs List)
-
 ## 1. Overview
-This file represents the `Worship Songs` list page of the application. It fetches all available songs and renders them using the `SongsClient` component.
+
+- **Purpose**: Implements the `/songs` page by loading all songs and rendering the interactive songs client.
+- **Problem it solves**: Separates server-side data access from the client-side search and filter UI for songs.
+- **High-level responsibility**: Fetch all songs via `getAllSongs` and pass them to `SongsClient`.
 
 ## 2. File Location
-`app/songs/page.tsx`
+
+- Source: `app/songs/page.tsx`
 
 ## 3. Key Components
-- **SongsClient**: The client-side component that handles searching, filtering, and displaying the song grid.
+
+- `SongsPage` (default export)
+  - Async server component.
+  - Calls `getAllSongs()` from `lib/songs`.
+  - Renders `<SongsClient initialVideos={songs} />`.
+- `getAllSongs`
+  - Library function returning an array of `Song` objects.
+- `SongsClient`
+  - Client-side component that handles searching, filtering, and listing songs.
 
 ## 4. Execution Flow
-1. Imports `getAllSongs` from the songs library and the `SongsClient` component.
-2. Fetches all song data using `getAllSongs()`.
-3. Passes the fetched songs to `SongsClient` as `initialVideos`.
-4. Exports the page as a default async function.
+
+- On navigation to `/songs`:
+  1. Next.js runs `SongsPage` on the server.
+  2. `getAllSongs()` retrieves all songs from filesystem.
+  3. The `songs` array is passed to `SongsClient` as `initialVideos`.
 
 ## 5. Data Flow
-- **Inputs**: None (fetches data internally).
-- **Processing**: Retrieves all songs from the library.
-- **Outputs**: Rendered `SongsClient` component with the list of songs.
-- **Dependencies**: Relies on `lib/songs` for data fetching.
+
+- **Inputs**:
+  - MDX song files from `content/songs` via `getAllSongs`.
+- **Processing**:
+  - `SongsPage` performs no extra processing beyond passing data down.
+- **Outputs**:
+  - JSX that renders `SongsClient` with the songs list.
+- **Dependencies**:
+  - `../../lib/songs`.
+  - `./SongsClient`.
 
 ## 6. Mermaid Diagrams
+
 ```mermaid
 flowchart TD
-A[Songs Page] --> B[lib/songs - getAllSongs]
-A --> C[SongsClient Component]
+    A[Request '/songs'] --> B[SongsPage]
+    B --> C[getAllSongs]
+    C --> D[songs: Song[]]
+    B --> E[SongsClient initialVideos={songs}]
+    E --> F[Songs Listing UI]
 ```
 
 ## 7. Error Handling & Edge Cases
-- Handles cases where no songs are found by passing an empty array to `SongsClient` (which handles its own empty state).
+
+- `getAllSongs` returns an empty array if the songs directory is missing; in this case, `SongsClient` will show a fallback.
+- No additional error handling is defined here.
 
 ## 8. Example Usage
-Navigating to `/songs` in the browser executes this page.
+
+- Used automatically as the `/songs` route.

@@ -1,43 +1,72 @@
-# Documentation for `page.tsx` (Single Song Page)
-
 ## 1. Overview
-This file represents the individual song page. It dynamically fetches a song's details based on its slug and renders it using the `SingleSongClient` component. It also generates static params for all songs to support static site generation.
+
+- **Purpose**: Handles dynamic song detail routes under `/songs/[slug]`.
+- **Problem it solves**: Generates static parameters for all songs and renders a single-song player page.
+- **High-level responsibility**: Build static paths from available songs, fetch a song (and list of all songs), and delegate rendering to `SingleSongClient`.
 
 ## 2. File Location
-`app/songs/[slug]/page.tsx`
+
+- Source: `app/songs/[slug]/page.tsx`
 
 ## 3. Key Components
-- **SingleSongClient**: The client-side component that handles the video player, song details, and the "Up Next" sidebar.
+
+- `generateStaticParams()`
+  - Next.js data function that:
+    - Calls `getAllSongs()`.
+    - Maps each song to `{ slug: song.slug }` for static generation.
+- `SongPage` (default export)
+  - Async server component taking `{ params }`.
+  - Awaits `params` to extract `slug`.
+  - Calls `getSongBySlug(slug)` and `getAllSongs()`.
+  - If `song` is falsy, calls `notFound()` to trigger a 404.
+  - Otherwise renders `<SingleSongClient song={song} allSongs={allSongs} />`.
+- `SingleSongClient`
+  - Client component responsible for the player UI and "Up Next" list.
 
 ## 4. Execution Flow
-1. **Static Params Generation**: `generateStaticParams` fetches all songs and returns their slugs for pre-rendering.
-2. **Page Rendering**:
-   - Extracts the `slug` from route parameters.
-   - Fetches the specific song data using `getSongBySlug(slug)`.
-   - Fetches the full list of songs to provide the "Up Next" context.
-   - If the song is not found, it triggers the `notFound()` helper.
-3. Renders the `SingleSongClient` with the song and full list as props.
+
+- Build time (static generation):
+  1. `generateStaticParams` retrieves all songs.
+  2. Next.js creates routes for each `{ slug }`.
+- Request time:
+  1. For a specific slug, Next.js runs `SongPage`.
+  2. `SongPage` loads the `song` and `allSongs` from `lib/songs`.
+  3. If no song is found, `notFound()` is invoked.
+  4. If found, `SingleSongClient` renders the detailed player page.
 
 ## 5. Data Flow
-- **Inputs**: `params` containing the song `slug`.
+
+- **Inputs**:
+  - Dynamic route parameter `slug`.
+  - Song MDX files via `getAllSongs`/`getSongBySlug`.
 - **Processing**:
-  - Matches the slug against the song database.
-  - Prepares the "Up Next" list by fetching all songs.
-- **Outputs**: Rendered `SingleSongClient` component.
-- **Dependencies**: Relies on `lib/songs` and Next.js internal routing/navigation helpers.
+  - Static params generation.
+  - Single song lookup and complete list retrieval.
+- **Outputs**:
+  - Song detail page rendered by `SingleSongClient`.
+- **Dependencies**:
+  - `../../../lib/songs`.
+  - `./SingleSongClient`.
+  - `next/navigation` for `notFound`.
 
 ## 6. Mermaid Diagrams
+
 ```mermaid
 flowchart TD
-A[Song Page Request] --> B[generateStaticParams]
-A --> C[SongPage Component]
-C --> D{Find Song by Slug}
-D -->|Found| E[SingleSongClient]
-D -->|Not Found| F[notFound Helper]
+    A[getAllSongs] --> B[generateStaticParams]
+    B --> C[Static Paths /songs/:slug]
+
+    D[SongPage({ params })] --> E[getSongBySlug(slug)]
+    D --> F[getAllSongs]
+    E -->|null| G[notFound]
+    E -->|Song| H[SingleSongClient song, allSongs]
 ```
 
 ## 7. Error Handling & Edge Cases
-- **404 Handling**: Uses `notFound()` if a slug does not correspond to an existing song file.
+
+- If `getSongBySlug` returns `null`, `notFound()` triggers a 404 page.
+- If `getAllSongs` returns an empty list, `generateStaticParams` will create no routes.
 
 ## 8. Example Usage
-Navigating to `/songs/kina-lagchha` will fetch the markdown content for that song and render this page.
+
+- Automatically used for routes like `/songs/biblical-greek-alphabet-song`.

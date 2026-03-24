@@ -1,43 +1,64 @@
-# Documentation for `BlogCards.tsx`
-
 ## 1. Overview
-This file defines the `BlogCards` component, which is responsible for displaying a preview of blog articles in a card format. It is used to provide a quick overview of articles with titles, summaries, and thumbnails.
+
+- **Purpose**: Render a responsive grid of blog/article cards.
+- **Problem it solves**: Provides a reusable layout for displaying lists of articles with consistent styling.
+- **High-level responsibility**: Accept an array of posts and render linked cards pointing to individual article pages.
 
 ## 2. File Location
-`src/Components/BlogCards.tsx`
+
+- Source: `Components/BlogCards.tsx`
 
 ## 3. Key Components
-- **BlogCards**: The main component that renders individual article cards.
-- **Props**: Accepts article data as props, including title, summary, and image.
+
+- `BlogCards` (default export)
+  - Props: `{ posts: Post[] }` where `Post` includes `slug`, `title`, `date`, `author`, `category`, `categoryColor`, `image`, `readTime`, `description`.
+  - Maps over `posts` to create individual cards.
+- `Post` and `PostListProps` interfaces
+  - Local TypeScript definitions specifying the expected shape of each post.
 
 ## 4. Execution Flow
-1. Receives article data as props.
-2. Maps over the data to render individual cards.
-3. Applies styles and layouts for consistent design.
-4. Exports the component for reuse.
+
+- On render:
+  1. Wraps content in a `section` and centered container.
+  2. Renders a CSS grid that adapts to 1/2/3 columns depending on screen size.
+  3. For each `article` in `posts`:
+     - Wraps the card in a `Link` to `/articles/${slug}`.
+     - Renders an image with category badge overlay.
+     - Displays date and read time.
+     - Shows title, description, and author.
 
 ## 5. Data Flow
-- **Inputs**: Article data passed as props.
-- **Processing**: Maps over the data to generate cards.
-- **Outputs**: Rendered article cards.
-- **Dependencies**: Relies on CSS modules or styled-components for styling.
+
+- **Inputs**:
+  - `posts` array from callers like `ArticlePost` or `ArticlesClient`.
+- **Processing**:
+  - No transformation beyond mapping; assumes `posts` is correctly shaped.
+- **Outputs**:
+  - A grid of clickable cards linking to article detail pages.
+- **Dependencies**:
+  - `next/image` and `next/link`.
 
 ## 6. Mermaid Diagrams
+
 ```mermaid
 flowchart TD
-A[BlogCards Component] --> B[Props: Article Data]
-B --> C[Render Article Cards]
-C --> D[Apply Styles]
+    A[BlogCards(posts)] --> B[Map posts]
+    B --> C[Create Card for Each]
+    C --> D[Link to /articles/:slug]
+    D --> E[Article Detail Page]
 ```
 
 ## 7. Error Handling & Edge Cases
-- Handles cases where article data is missing or incomplete.
-- Ensures proper rendering even with minimal data.
+
+- If `article.image` is missing, a default image `/images/default-post.jpg` is used.
+- If `posts` is empty, the grid will render with no cards; no fallback message is defined here.
 
 ## 8. Example Usage
+
 ```tsx
-<BlogCards articles={[
-  { title: 'Article 1', summary: 'Summary 1', image: 'image1.jpg' },
-  { title: 'Article 2', summary: 'Summary 2', image: 'image2.jpg' }
-]} />
+import BlogCards from "../Components/BlogCards";
+import { getAllPosts } from "../lib/posts";
+
+const posts = getAllPosts();
+<BlogCards posts={posts} />;
 ```
