@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Song } from "../../lib/songs";
+import Image from "next/image";
 
 // Helper function to extract YouTube video ID from URL
 function extractYouTubeId(url: string): string | null {
@@ -173,10 +174,12 @@ export default function SongsClient({ initialVideos }: { initialVideos: Song[] }
                                             className="cursor-pointer group block"
                                         >
                                             <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                                                <img
+                                                <Image
                                                     src={thumbnailUrl}
                                                     alt={video.title}
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    width={400}
+                                                    height={400}
                                                 />
                                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                                                 <span className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-md text-white text-[10px] rounded-md font-bold uppercase tracking-wider">{video.duration}</span>

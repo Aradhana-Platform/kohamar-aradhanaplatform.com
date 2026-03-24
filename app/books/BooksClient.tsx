@@ -44,7 +44,7 @@ export default function BooksClient({ books }: BooksClientProps) {
                         className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
                         style={{ fontFamily: "'Libre Baskerville', serif" }}
                     >
-                        Our Book Collection
+                        Our Book <span className="text-[#1c388b]">Collection</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -82,34 +82,26 @@ export default function BooksClient({ books }: BooksClientProps) {
                                             View Details <ArrowRight size={18} />
                                         </span>
                                     </div>
-                                    <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-lg font-bold shadow-md">
+                                    <div className="absolute top-4 right-4 bg-gradient-to-br from-[#1c388b] to-[#101c39] text-white px-3 py-1 rounded-lg font-bold shadow-md">
                                         {book.price}
                                     </div>
                                 </div>
 
                                 <div className="p-6">
-                                    <div className="flex items-center gap-2 text-blue-600 text-sm font-semibold mb-2 uppercase tracking-wider">
+                                    <div className="flex items-center gap-2 text-[#1c388b] text-sm font-semibold mb-2 uppercase tracking-wider">
                                         <Tag size={14} />
                                         {book.category}
                                     </div>
-                                    <h2 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                    <h2 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-[#1c388b] transition-colors duration-300">
                                         {book.title}
                                     </h2>
-                                    <div className="flex items-center gap-2 text-slate-500 mb-4">
+                                    <div className="flex items-center gap-2 text-slate-500 mb-4 hover:text-[#1c388b]">
                                         <User size={16} />
-                                        <span className="text-sm font-medium">{book.author}</span>
+                                        <span className="text-sm font-medium hover:text-[#1c388b]">{book.author}</span>
                                     </div>
-                                    <p className="text-slate-600 text-sm line-clamp-2 mb-4 leading-relaxed">
+                                    <p className="text-slate-600 hover:text-[#1c388b] text-sm line-clamp-2 mb-4 leading-relaxed">
                                         {book.description}
                                     </p>
-
-                                    {/* <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                                        <span className="text-slate-400 text-xs flex items-center gap-1">
-                                            <BookOpen size={14} />
-                                            Available in PDF/Print
-                                        </span>
-                                        <ShoppingCart size={18} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
-                                    </div> */}
                                 </div>
                             </Link>
                         </motion.div>
