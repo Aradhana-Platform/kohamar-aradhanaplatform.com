@@ -32,6 +32,29 @@ This `docs/` directory provides structured documentation for every major source 
 - To understand global behavior and tooling:
   - Read the config docs and `ARCHITECTURE.md` / `DATA_FLOW.md`.
 
+## Cross-Linked Flows
+
+- Articles:
+  - Route docs: `docs/app/articles/page.tsx.md`, `docs/app/articles/[slug]/page.tsx.md`.
+  - Loader docs: `docs/lib/posts.ts.md`.
+  - UI docs: `docs/Components/BlogCards.tsx.md`, `docs/Components/ArticleUI.tsx.md`.
+- Magazines:
+  - Route docs: `docs/app/magazines/page.tsx.md`, `docs/app/magazines/[slug]/page.tsx.md`.
+  - Loader docs: `docs/lib/magazine.ts.md`.
+  - UI docs: `docs/Components/MagazineCard.tsx.md`.
+- Books:
+  - Route docs: `docs/app/books/page.tsx.md`, `docs/app/books/[slug]/page.tsx.md`.
+  - Loader docs: `docs/lib/books.ts.md`.
+  - UI docs: `docs/app/books/BooksClient.tsx.md`, `docs/app/books/[slug]/BookDetailClient.tsx.md`.
+- Songs:
+  - Route docs: `docs/app/songs/page.tsx.md`, `docs/app/songs/[slug]/page.tsx.md`.
+  - Loader docs: `docs/lib/songs.ts.md`.
+  - UI docs: `docs/app/songs/SongsClient.tsx.md`, `docs/app/songs/[slug]/SingleSongClient.tsx.md`.
+- Home & Categories:
+  - Route docs: `docs/app/home/page.tsx.md`.
+  - Data docs: `docs/lib/category.ts.md`.
+  - UI docs: `docs/app/home/ArticlePost.tsx.md`, `docs/Components/Category.tsx.md`.
+
 ## Conventions
 
 - Each documentation file uses numbered sections:
