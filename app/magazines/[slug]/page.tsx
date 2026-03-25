@@ -147,7 +147,7 @@ export default async function page({ params }: { params: Promise<{ slug: string 
         {/* content */}
         <div className="prose prose-lg prose-slate md:max-w-6xl mx-auto text-justify mt-10">
             <div className="prose prose-lg prose-slate max-w-none">
-                <MDXRemote source={magazine.content} components={{ ...EnterMdxComponent }} />
+                <MDXRemote source={magazine.content} components={{}} />
             </div>
         </div>
     </>
