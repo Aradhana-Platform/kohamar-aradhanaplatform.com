@@ -2,7 +2,6 @@ import ReactMarkdown from "react-markdown";
 import { HeroImage } from "../../../Components/ArticleUI";
 import { getMagazineBySlug } from "../../../lib/magazine";
 import { MDXProvider } from "@mdx-js/react";
-import { TextDesign } from "../../../Components/mdx-components/TextDesign";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 export default async function page({ params }: { params: Promise<{ slug: string }> }) {
