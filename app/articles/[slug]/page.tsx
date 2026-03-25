@@ -12,7 +12,7 @@ import {
     Clock,
     C
 } from "../../../Components/ArticleUI";
-import { TextDesign } from "../../../Components/mdx-components/TextDesign";
+import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
 
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const slug = (await params).slug;
@@ -93,11 +93,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
 
                 {/* main content column */}
                 <div className="prose prose-lg prose-slate max-w-none">
-                    {post.frontmatter.description && (
-                        <PullQuote>{post.frontmatter.description}</PullQuote>
-                    )}
-
-                    <MDXRemote source={post.content} components={{ ...TextDesign }} />
+                    <MDXRemote source={post.content} components={{ ...EnterMdxComponent }} />
                 </div>
             </div>
         </div>
