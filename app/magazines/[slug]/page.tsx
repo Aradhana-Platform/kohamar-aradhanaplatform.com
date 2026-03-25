@@ -3,6 +3,7 @@ import { HeroImage } from "../../../Components/ArticleUI";
 import { getMagazineBySlug } from "../../../lib/magazine";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
 
 export default async function page({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -146,7 +147,7 @@ export default async function page({ params }: { params: Promise<{ slug: string 
         {/* content */}
         <div className="prose prose-lg prose-slate md:max-w-6xl mx-auto text-justify mt-10">
             <div className="prose prose-lg prose-slate max-w-none">
-                <MDXRemote source={magazine.content} components={{ ...TextDesign }} />
+                <MDXRemote source={magazine.content} components={{ ...EnterMdxComponent }} />
             </div>
         </div>
     </>
