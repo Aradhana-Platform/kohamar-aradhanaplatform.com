@@ -20,8 +20,7 @@
   - Imported from `lib/magazine`; reads a magazine MDX file and returns `{ frontmatter, content }`.
 - `MDXRemote` from `next-mdx-remote/rsc`
   - Renders the MDX `content` using React components.
-- `TextDesign` from `Components/mdx-components/TextDesign`
-  - Custom MDX component mapping for consistent typography and styling.
+  - Currently uses the default component mapping (no custom typography overrides).
 
 ## 4. Execution Flow
 
@@ -33,7 +32,7 @@
      - Background image set to the magazine cover.
      - Gradient overlay and typography-driven title and metadata.
   5. Renders the article body below the hero:
-     - Uses `MDXRemote` with `TextDesign` to render magazine content as rich prose.
+      - Uses `MDXRemote` to render magazine content as rich prose with default MDX component mappings.
 
 ## 5. Data Flow
 
@@ -48,7 +47,6 @@
 - **Dependencies**:
   - `../../../lib/magazine`.
   - `next-mdx-remote/rsc`.
-  - `../../../Components/mdx-components/TextDesign`.
 
 ## 6. Mermaid Diagrams
 
