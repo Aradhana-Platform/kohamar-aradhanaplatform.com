@@ -76,7 +76,7 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                             <Tag size={16} /> {book.category}
                         </div>
                         <h1
-                            className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight"
+                            className="text-4xl md:text-5xl lg:text-3xl font-black text-slate-900 mb-6 leading-tight"
                             style={{ fontFamily: "'Libre Baskerville', serif" }}
                         >
                             {book.title}
@@ -88,7 +88,7 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                                     <User size={20} className="text-slate-500" />
                                 </div>
                                 <div>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-tighter">Author</p>
+                                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-tighter">Author</p>
                                     <p className="font-bold text-slate-800">{book.author}</p>
                                 </div>
                             </div>
@@ -97,13 +97,13 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                                     <Calendar size={20} className="text-slate-500" />
                                 </div>
                                 <div>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-tighter">Published</p>
+                                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-normal">Published</p>
                                     <p className="font-bold text-slate-800">{book.date}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-xl text-slate-600 leading-relaxed italic mb-8 border-l-4 border-blue-600 pl-6 py-2">
+                        <p className="text-sm text-slate-700 leading-relaxed italic mb-8 border-l-4 border-[#1c388b] pl-6 py-2">
                             {book.description}
                         </p>
 
