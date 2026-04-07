@@ -6,6 +6,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { Book } from "../../../lib/books";
 import { ArrowLeft, User, Calendar, Tag, Download, Share2, Bookmark } from "lucide-react";
+import { BackButton } from "../../../Components/ArticleUI";
 
 interface BookDetailClientProps {
     book: Book;
@@ -22,12 +23,8 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                     animate={{ opacity: 1, x: 0 }}
                     className="mb-10"
                 >
-                    <Link
-                        href="/books"
-                        className="inline-flex items-center gap-2 text-slate-600 hover:text-[#1c388b] font-medium transition-colors"
-                    >
-                        <ArrowLeft size={20} /> Back to Collection
-                    </Link>
+
+                    <BackButton backprops={{ path: "/books" }} />
                 </motion.div>
 
                 {/* Book Hero Section */}

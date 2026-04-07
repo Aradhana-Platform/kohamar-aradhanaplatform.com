@@ -1,9 +1,10 @@
 import ReactMarkdown from "react-markdown";
-import { HeroImage } from "../../../Components/ArticleUI";
+import { BackButton, HeroImage } from "../../../Components/ArticleUI";
 import { getMagazineBySlug } from "../../../lib/magazine";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
+import Image from "next/image";
 
 export default async function page({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -39,7 +40,8 @@ export default async function page({ params }: { params: Promise<{ slug: string 
 
             <div className="hero-wrap" style={{ position: "relative", width: "100%", height: "100%" }}>
                 {/* Background image */}
-                <img
+
+                <Image
                     src={image}
                     alt={title}
                     style={{
@@ -47,15 +49,17 @@ export default async function page({ params }: { params: Promise<{ slug: string 
                         width: "100%", height: "100%",
                         objectFit: "cover", objectPosition: "center",
                     }}
+                    width={500} height={500} quality={90} priority
                 />
-
-                {/* <HeroImage src={image} alt={title} /> */}
 
                 {/* Dark gradient overlay — stronger at bottom-left */}
                 <div style={{
                     position: "absolute", inset: 0,
                     background: "linear-gradient(135deg, rgba(10,20,40,0.72) 0%, rgba(10,20,40,0.45) 50%, rgba(10,20,40,0.15) 100%)",
                 }} />
+                <div className="top-12 left-10 absolute bg-gray-100 rounded-md w-1/18 flex justify-center z-50">
+                    <BackButton backprops={{ path: "/magazines" }} />
+                </div>
 
                 {/* Content */}
                 <div style={{
@@ -142,14 +146,14 @@ export default async function page({ params }: { params: Promise<{ slug: string 
 
                 </div>
             </div>
-        </div>
+        </div >
 
         {/* content */}
-        <div className="prose prose-lg prose-slate md:max-w-6xl mx-auto text-justify mt-10">
+        <div className="prose prose-lg prose-slate md:max-w-6xl mx-auto text-justify mt-10" >
             <div className="prose prose-lg prose-slate max-w-none">
                 <MDXRemote source={magazine.content} components={{}} />
             </div>
-        </div>
+        </div >
     </>
 
     );
