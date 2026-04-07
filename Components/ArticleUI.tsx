@@ -52,9 +52,14 @@ export const Clock = () => (
    COMPONENTS
    ══════════════════════════════════════════════════════════════════════════════ */
 
-export function BackButton() {
+type Back = {
+    path: string;
+    label?: string;
+};
+
+export function BackButton({ backprops }: { backprops: Back }) {
     return (
-        <Link href="/articles" style={{
+        <Link href={backprops.path} style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             textDecoration: "none",
             color: C.gray700, fontSize: "0.92rem", fontWeight: 500,
@@ -62,7 +67,7 @@ export function BackButton() {
             fontFamily: "sans-serif",
         }}>
             <ArrowLeft />
-            <span>Back to Articles</span>
+            <span>Back</span>
         </Link>
     );
 }

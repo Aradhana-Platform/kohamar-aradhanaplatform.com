@@ -59,23 +59,8 @@ export default function ShareSidebar({ url, blogTitle }: { url: string, blogTitl
 
 
     return (
-        <div style={{
-            position: "sticky",
-            top: 100,
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            alignItems: "flex-start",
-        }}>
-            <span style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                color: C.gray600,
-                marginBottom: 4,
-                fontFamily: "sans-serif",
-            }}>
+        <div className="fixed bottom-10 right-3 md:sticky md:top-[100px] flex flex-col md:gap-4 items-start">
+            <span className="text-sm font-semibold tracking-wider text-[#1c388b]/50 uppercase mb-1 font-sans">
                 Share
             </span>
 

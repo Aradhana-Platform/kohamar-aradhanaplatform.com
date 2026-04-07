@@ -50,7 +50,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     padding: "28px 6vw 32px",
                 }}>
                     <div style={{ marginBottom: 20, paddingTop: 20 }}>
-                        <BackButton />
+                        <BackButton backprops={{ path: "/articles" }} />
                     </div>
 
                     <div style={{ marginBottom: 14 }}>
@@ -84,9 +84,9 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {/* ── Article body grid (content + sidebar) ── */}
-            <div className="mx-auto max-w-[1400px] md:max-w-[1200px] grid grid-cols-[10px_1fr] md:grid-cols-[80px_1fr] gap-13 md:gap-12 px-[3vw] md:px-[6vw] pt-12">
+            <div className="mx-auto max-w-[1400px] md:max-w-[1200px] grid grid-cols-1 md:grid-cols-[80px_1fr] gap-13 md:gap-1 md:px-[6vw] pt-12">
                 {/* left sidebar – share */}
-                <div>
+                <div className="">
                     <ShareSidebar url={blogUrl} blogTitle={blogTitle} />
                 </div>
 

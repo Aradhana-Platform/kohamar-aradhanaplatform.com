@@ -17,13 +17,13 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <div className="flex items-center gap-3 group cursor-pointer">
-                            <Link href="/" className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                            <Link href="/" className="w-12 overflow-hidden h-12 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                                 <img src="/logo.jpg" alt="kohamar logo" className='h-full w-full object-cover' />
                             </Link>
                         </div>
 
                         {/* Desktop Menu */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden md:flex items-center gap-8 text-sm">
                             <Link
                                 href="/"
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
@@ -59,6 +59,12 @@ export default function Navbar() {
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
                             >
                                 Songs
+                            </Link>
+                            <Link
+                                href="/quick-read"
+                                className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
+                            >
+                                Quick Read
                             </Link>
                             {/* <Link
                                 href="/developer"
