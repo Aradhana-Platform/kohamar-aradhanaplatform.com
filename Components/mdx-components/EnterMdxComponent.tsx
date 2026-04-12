@@ -19,7 +19,7 @@ export const EnterMdxComponent = {
     ),
 
     p: (props: React.ComponentProps<"p">) => (
-        <p {...props} className="leading-7 mb-4 text-slate-600" />
+        <span {...props} className="leading-7 mb-4 text-slate-600" />
     ),
 
     strong: (props: React.ComponentProps<"strong">) => (

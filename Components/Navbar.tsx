@@ -64,7 +64,7 @@ export default function Navbar() {
                                 href="/quick-read"
                                 className="text-slate-700 hover:text-slate-900 transition-colors font-medium tracking-wide"
                             >
-                                Quick Read
+                                Quick Reads
                             </Link>
                             {/* <Link
                                 href="/developer"
@@ -140,6 +140,13 @@ export default function Navbar() {
                                 onClick={handleClose}
                             >
                                 Songs
+                            </Link>
+                            <Link
+                                href="/quick-read"
+                                className="block text-slate-700 hover:text-slate-900 transition-colors font-medium"
+                                onClick={handleClose}
+                            >
+                                Quick Reads
                             </Link>
                         </div>
                     )}
