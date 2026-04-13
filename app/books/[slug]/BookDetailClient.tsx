@@ -100,8 +100,17 @@ export default function BookDetailClient({ book, content }: BookDetailClientProp
                             </div>
                         </div>
 
-                        <p className="text-sm text-slate-700 leading-relaxed italic mb-8 border-l-4 border-[#1c388b] pl-6 py-2">
-                            {book.description}
+                        <p className="text-sm text-slate-700 leading-relaxed mb-8 border-l-4 border-[#1c388b] pl-6 py-2">
+                            {book.description.split(book.title).map((part, idx, arr) =>
+                                idx < arr.length - 1 ? (
+                                    <React.Fragment key={idx}>
+                                        {part}
+                                        <span className="font-bold italic">{book.title}</span>
+                                    </React.Fragment>
+                                ) : (
+                                    part
+                                )
+                            )}
                         </p>
 
                         {/* Markdown Content */}
