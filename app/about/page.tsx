@@ -86,7 +86,7 @@ export default function AboutPage() {
                     {/* ── image + floating stat ── */}
                     <Reveal delay={0.12}>
                         <div className="relative">
-                            <Image src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800" width={700} height={400} className="rounded-3xl" alt="our purpose" />
+                            <Image src="/about-images/Profile.jpg" width={700} height={400} className="rounded-3xl" alt="our purpose" />
 
                             {/* floating stat badge */}
                             <div
@@ -99,8 +99,8 @@ export default function AboutPage() {
                                     zIndex: 2,
                                 }}
                             >
-                                <p className="text-white font-bold leading-none" style={{ fontSize: "2.1rem", fontFamily: "Georgia, serif" }}>500+</p>
-                                <p className="text-xs mt-1 tracking-wide" style={{ color: "rgba(255,255,255,0.82)", fontFamily: "sans-serif" }}>Articles Published</p>
+                                <p className="text-sm mt-1 tracking-wide" style={{ color: "rgba(255,255,255,0.82)", fontFamily: "sans-serif" }}>Equipping Minds, <br />Preaching the Word</p>
+                                <p className="text-white font-bold leading-none" style={{ fontSize: "2.1rem", fontFamily: "Georgia, serif" }}>since 2003</p>
                             </div>
                         </div>
                     </Reveal>

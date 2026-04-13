@@ -18,7 +18,7 @@ export const QuickRead = ({ posts }: { posts: Post[] }) => {
     return (
         <div className="space-y-4 py-16 px-4">
             <div className="text-2xl text-start mx-auto w-2/3 font-semibold text-gray-600 flex items-center">
-                <h1>Quick Read</h1>
+                <h1>Quick Reads</h1>
                 <Image src="https://img.freepik.com/free-vector/lightning-bolt-circle-gradient_78370-5397.jpg?semt=ais_incoming&w=740&q=80" height={40} width={40} alt="" />
             </div>
 
