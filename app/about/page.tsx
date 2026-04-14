@@ -115,7 +115,14 @@ export default function AboutPage() {
                 className="mt-6 text-base leading-relaxed"
                 style={{ color: T.gray700, fontFamily: "Georgia, serif" }}
               >
-                Rev. Amar Pandey is Academic Dean of Nepal Theological College. He earned his PhD from Middlesex University (London, UK), MTh from SAIACS (Bangalore, India), and MDiv (summa cum laude) from APTS (Baguio City, Philippines). In addition to teaching, preaching, and writing, Amar likes to hike the beautiful hills of Nepal. Although neither a poet/litterateur nor a person trained in music, he enjoys songwriting occasionally. Amar lives in Kathmandu with his wife and their two children.
+                Rev. Amar Pandey is Academic Dean of Nepal Theological College.
+                He earned his PhD from Middlesex University (London, UK), MTh
+                from SAIACS (Bangalore, India), and MDiv (summa cum laude) from
+                APTS (Baguio City, Philippines). In addition to teaching,
+                preaching, and writing, Amar likes to hike the beautiful hills
+                of Nepal. Although neither a poet/litterateur nor a person
+                trained in music, he enjoys songwriting occasionally. Amar lives
+                in Kathmandu with his wife and their two children.
               </p>
               {/* <p className="mt-4 text-base leading-relaxed" style={{ color: T.gray700, fontFamily: "Georgia, serif" }}>
                                 Our team of scholars, pastors, and writers work together to present complex theological concepts in clear, engaging language—without sacrificing depth or accuracy.
