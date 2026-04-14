@@ -44,7 +44,7 @@ export default function BooksClient({ books }: BooksClientProps) {
                         className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
                         style={{ fontFamily: "'Libre Baskerville', serif" }}
                     >
-                        Our Book <span className="text-[#1c388b]">Collection</span>
+                        <span className="text-[#1c388b]">Books</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -52,7 +52,7 @@ export default function BooksClient({ books }: BooksClientProps) {
                         transition={{ delay: 0.2 }}
                         className="text-slate-600 max-w-2xl mx-auto text-lg"
                     >
-                        Explore our curated selection of theological insights, spiritual guides, and practical wisdom.
+                        Explore Books by Amar Pandey
                     </motion.p>
                 </div>
 
