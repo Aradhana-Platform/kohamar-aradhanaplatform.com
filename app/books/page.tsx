@@ -3,11 +3,11 @@ import { getAllBooks } from "../../lib/books";
 import BooksClient from "./BooksClient";
 
 export default async function BooksPage() {
-    const books = getAllBooks();
+  const books = getAllBooks();
 
-    return (
-        <>
-            <BooksClient books={books} />
-        </>
-    );
+  return (
+    <>
+      <BooksClient books={books} />
+    </>
+  );
 }
