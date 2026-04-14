@@ -37,7 +37,7 @@ const Home = () => {
                             <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                         </svg>
                         <span className="text-amber-400 uppercase tracking-widest text-sm font-medium">
-                            Exploring Faith & Reason
+                            Engaging the Word and The World
                         </span>
                     </div>
 
@@ -62,9 +62,7 @@ const Home = () => {
                         className="text-slate-200 text-lg sm:text-xl lg:text-xl max-w-3xl mb-8 leading-relaxed font-normal"
                         style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}
                     >
-                        Journey through centuries of Christian thought, biblical wisdom, and
-                        spiritual insights. Discover articles that illuminate faith and inspire
-                        deeper reflection.
+                        Scripture. Exegesis. Exposition. Theology. Praxis. <br />
                     </p>
 
                     {/* CTA Buttons */}
