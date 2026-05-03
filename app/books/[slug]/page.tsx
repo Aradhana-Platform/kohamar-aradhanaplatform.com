@@ -12,6 +12,7 @@ export default async function BookDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const bookData = getBookBySlug(slug);
 
+
   if (!bookData) {
     notFound();
   }

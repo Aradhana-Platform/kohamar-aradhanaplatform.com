@@ -158,7 +158,7 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
   const fadeIn = (delay = 0) => ({
     opacity: mounted ? 1 : 0,
     transform: mounted ? "translateY(0)" : "translateY(14px)",
-    transition: `opacity 0.8s ${delay}s cubic-bezier(0.22,1,.36,1), transform 0.8s ${delay}s cubic-bezier(0.22,1,.36,1)`,
+    transition: `opacity 0.8s ${ delay }s cubic-bezier(0.22,1,.36,1), transform 0.8s ${ delay }s cubic-bezier(0.22,1,.36,1)`,
   });
 
   const filteredPosts = posts.filter((post) => {
@@ -272,8 +272,7 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
               margin: "18px auto 0",
             }}
           >
-            Explore our collection of theological writings, biblical insights,
-            and spiritual reflections.
+            Explore and access Amar&apos;s academic articles I am sure you will add responsive bibliographic entries before each article, as discussed earlier.
           </p>
         </div>
       </header>
@@ -331,7 +330,7 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                 fontFamily: "inherit",
                 color: "#101c39",
                 background: "#fff",
-                border: `1.5px solid ${focusSearch ? "#1c388b" : "#e2e5ea"}`,
+                border: `1.5px solid ${ focusSearch ? "#1c388b" : "#e2e5ea" }`,
                 borderRadius: 999,
                 outline: "none",
                 boxSizing: "border-box",
@@ -370,15 +369,15 @@ export default function ArticlesClient({ posts }: { posts: Post[] }) {
                     cursor: "pointer",
                     background: on ? "#1c388b" : "#fff",
                     color: on ? "#fff" : "#101c39",
-                    border: `1.5px solid ${on ? "#1c388b" : "#e2e5ea"}`,
+                    border: `1.5px solid ${ on ? "#1c388b" : "#e2e5ea" }`,
                     boxShadow: on
                       ? "0 2px 10px rgba(30,45,68,0.28)"
                       : "0 1px 4px rgba(0,0,0,0.065)",
                     /* staggered reveal */
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? "translateY(0)" : "translateY(8px)",
-                    transition: `opacity 0.7s ${0.28 + i * 0.055}s cubic-bezier(0.22,1,.36,1),
-                                    transform 0.7s ${0.28 + i * 0.055}s cubic-bezier(0.22,1,.36,1),
+                    transition: `opacity 0.7s ${ 0.28 + i * 0.055 }s cubic-bezier(0.22,1,.36,1),
+                                    transform 0.7s ${ 0.28 + i * 0.055 }s cubic-bezier(0.22,1,.36,1),
                                     background 0.22s ease, color 0.22s ease,
                                     border-color 0.22s ease, box-shadow 0.22s ease`,
                   }}

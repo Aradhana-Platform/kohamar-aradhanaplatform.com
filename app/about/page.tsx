@@ -38,60 +38,9 @@ export default function AboutPage() {
         background: `linear-gradient(148deg, #101c39 0%, #1c388b 50%, #101c39 100%)`,
       }}
     >
-      {/* hero section */}
-      <section
-        className="relative overflow-hidden flex items-center max-w-7xl mx-auto"
-        style={{
-          minHeight: 280,
-          padding: "90px 6vw",
-        }}
-      >
-        {/* subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 70% 50%, rgb(27, 56, 140) 0%, transparent 70%)",
-          }}
-        />
-
-        <div
-          className="relative z-10 max-w-xl"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(22px)",
-            transition:
-              "opacity 1s .05s cubic-bezier(.22,1,.36,1), transform 1s .05s cubic-bezier(.22,1,.36,1)",
-          }}
-        >
-          <SectionLabel>our Mission</SectionLabel>
-
-          <h1
-            className="text-white font-light leading-none py-2"
-            style={{
-              fontSize: "clamp(2.2rem, 5vw, 3.2rem)",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              letterSpacing: "-0.01em",
-              textShadow: "0 2px 28px rgba(0,0,0,0.22)",
-            }}
-          >
-            Our Story <span className="italic">&amp;</span> Mission
-          </h1>
-
-          <p
-            className="mt-5 text-xl w-full leading-relaxed"
-            style={{
-              color: "rgba(255,255,255,0.72)",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Delving deeper into Scripture, Christian Life, and Ministry{" "}
-          </p>
-        </div>
-      </section>
 
       {/* Our Purpose */}
-      <section className="bg-white" style={{ padding: "80px 6vw" }}>
+      <section className="bg-white py-28 px-4">
         <div
           className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center"
           style={{ gap: "clamp(32px, 6vw, 72px)" }}
@@ -115,18 +64,15 @@ export default function AboutPage() {
                 className="mt-6 text-base leading-relaxed"
                 style={{ color: T.gray700, fontFamily: "Georgia, serif" }}
               >
-                Rev. Amar Pandey is Academic Dean of Nepal Theological College.
-                He earned his PhD from Middlesex University (London, UK), MTh
-                from SAIACS (Bangalore, India), and MDiv (summa cum laude) from
+                Rev. Amar Pandey is a biblical scholar. He earned his PhD from Middlesex University (London, UK), MTh
+                from SAIACS (Bangalore, India), and MDiv <span className="italic">(summa cum laude)</span> from
                 APTS (Baguio City, Philippines). In addition to teaching,
                 preaching, and writing, Amar likes to hike the beautiful hills
                 of Nepal. Although neither a poet/litterateur nor a person
                 trained in music, he enjoys songwriting occasionally. Amar lives
                 in Kathmandu with his wife and their two children.
               </p>
-              {/* <p className="mt-4 text-base leading-relaxed" style={{ color: T.gray700, fontFamily: "Georgia, serif" }}>
-                                Our team of scholars, pastors, and writers work together to present complex theological concepts in clear, engaging language—without sacrificing depth or accuracy.
-                            </p> */}
+
             </div>
           </Reveal>
 
@@ -146,7 +92,7 @@ export default function AboutPage() {
                 className="absolute rounded-xl shadow-xl"
                 style={{
                   bottom: "8%",
-                  left: "-4%",
+                  left: "-3%",
                   background: T.burgundy,
                   padding: "18px 26px",
                   minWidth: 140,
@@ -206,7 +152,6 @@ export default function AboutPage() {
       <section className="bg-white" style={{ padding: "88px 6vw 96px" }}>
         <Reveal>
           <div className="text-center mb-13">
-            <SectionLabel>The People Behind Theological</SectionLabel>
             <h2
               className="font-normal"
               style={{
@@ -220,9 +165,9 @@ export default function AboutPage() {
           </div>
         </Reveal>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
           {TEAM.map((m, i) => (
-            <Reveal key={m.name} delay={i * 0.08}>
+            <Reveal key={m.name} delay={i * 0.08} className="">
               <TeamCard {...m} />
             </Reveal>
           ))}

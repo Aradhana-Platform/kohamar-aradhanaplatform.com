@@ -27,18 +27,16 @@ export default function AdventureSection({ magazines }: MagazineCardProps) {
             {/* Title */}
             <div className="text-center py-10 ">
                 <h1 className="text-4xl font-bold text-black mb-4">
-                    Magazines
+                    Magazines/Bulletins
                 </h1>
-                <p className="text-lg text-gray-600">
-                    Here are some of our magazines
-                </p>
+                <p className="text-lg text-gray-600">Enjoy short and simple write-ups</p>
             </div>
 
             {/* Cards */}
             <div className="px-8 py-10 mx-auto lg:max-w-screen-xl sm:max-w-xl md:max-w-full sm:px-12 md:px-16 lg:py-20 sm:py-16">
                 <div className="grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3">
                     {adventures.map((adventure, index) => (
-                        <Link href={`/magazines/${ adventure.slug }`} key={index} className="relative">
+                        <Link href={`/magazines/${ adventure.slug }`} key={index} className="relative border border-gray-100 rounded-xl hover:shadow-sm">
                             <div className="block overflow-hidden group rounded-xl shadow-lg">
                                 <Image
                                     src={adventure.image}
@@ -49,7 +47,7 @@ export default function AdventureSection({ magazines }: MagazineCardProps) {
                                 />
                             </div>
 
-                            <div className="relative mt-5">
+                            <div className="relative mt-5 px-4 pb-4">
                                 <p className="uppercase font-semibold text-xs mb-2.5 text-[#1c388b]">
                                     {adventure.date}
                                 </p>
