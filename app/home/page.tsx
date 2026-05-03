@@ -49,7 +49,7 @@ const Home = () => {
               style={{ animation: "fadeInUp 0.8s ease-out" }}
             >
               <div
-                className="text-white text-end px-16 sm:px-28 md:px-0 lg:text-center drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] text-[40px] sm:text-[48px] md:text-[50px] lg:text-[60px] xl:text-[70px] md:w-3/4 tracking-wide font-bold leading-tight mb-4"
+                className="text-[40px] text-end md:text-start lg:text-[70px] lg:text-end lg:px-22 drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] text-white tracking-wide font-bold leading-tight"
                 style={{ fontFamily: "'Libre Baskerville', serif" }}
               >
                 כה אמר
