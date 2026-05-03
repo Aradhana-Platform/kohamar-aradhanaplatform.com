@@ -36,7 +36,7 @@ export default async function ArticleDetailPage({
 
   // const blog = post;
   const blogTitle = title;
-  const blogUrl = `${linkUrl}/${slug}`;
+  const blogUrl = `${ linkUrl }/${ slug }`;
 
   return (
     <div
@@ -77,6 +77,8 @@ export default async function ArticleDetailPage({
               letterSpacing: "-0.01em",
               fontFamily: "Georgia, 'Times New Roman', serif",
             }}
+
+            className="italic"
           >
             {title}
           </h1>

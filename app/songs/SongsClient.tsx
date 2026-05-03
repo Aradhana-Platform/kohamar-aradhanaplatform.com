@@ -154,7 +154,7 @@ export default function SongsClient({
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${cat === selectedCategory ? "bg-[#1c388b] text-white shadow-[#1c388b]/20" : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-100"}`}
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${ cat === selectedCategory ? "bg-[#1c388b] text-white shadow-[#1c388b]/20" : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-100" }`}
               >
                 {cat}
               </button>
@@ -167,7 +167,7 @@ export default function SongsClient({
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl font-bold text-slate-800">
             {searchQuery
-              ? `Search Results (${filteredVideos.length})`
+              ? `Search Results (${ filteredVideos.length })`
               : "Recent Songs"}
           </h2>
           {searchQuery && (
@@ -190,7 +190,7 @@ export default function SongsClient({
                 // Extract YouTube video ID from the video URL
                 const videoId = extractYouTubeId(video.video);
                 const thumbnailUrl = videoId
-                  ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                  ? `https://img.youtube.com/vi/${ videoId }/sddefault.jpg`
                   : video.image || "";
 
                 return (
@@ -203,7 +203,7 @@ export default function SongsClient({
                     key={video.slug}
                   >
                     <Link
-                      href={`/songs/${video.slug}`}
+                      href={`/songs/${ video.slug }`}
                       className="cursor-pointer group block"
                     >
                       <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-4 shadow-sm group-hover:shadow-md transition-shadow">

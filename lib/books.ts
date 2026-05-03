@@ -13,6 +13,7 @@ export interface Book {
   description: string;
   image: string;
   category: string;
+  booklinks: string
 }
 
 export function getAllBooks(): Book[] {
@@ -38,6 +39,7 @@ export function getAllBooks(): Book[] {
         description: data.description,
         image: data.image,
         category: data.category,
+        booklinks: data.booklinks
       };
     });
 }

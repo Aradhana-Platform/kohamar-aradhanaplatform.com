@@ -28,7 +28,7 @@ const Home = () => {
           <div className="max-w-6xl mx-auto relative w-full">
             {/* Category Tag */}
             <div
-              className="flex items-center gap-2 mb-4"
+              className="flex items-center justify-center md:justify-start gap-2 mb-0"
               style={{ animation: "fadeIn 0.8s ease-out" }}
             >
               <svg
@@ -38,7 +38,7 @@ const Home = () => {
               >
                 <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
               </svg>
-              <span className="text-amber-400 uppercase tracking-widest text-sm font-medium">
+              <span className="text-sm md:text-xs tracking-widest uppercase text-amber-500 font-medium">
                 Engaging the Word and The World
               </span>
             </div>
@@ -49,13 +49,13 @@ const Home = () => {
               style={{ animation: "fadeInUp 0.8s ease-out" }}
             >
               <div
-                className="text-5xl sm:text-6xl lg:text-7xl xl:text-6xl text-white leading-tight mb-4"
+                className="text-white text-end px-16 sm:px-28 md:px-0 lg:text-center drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] text-[40px] sm:text-[48px] md:text-[50px] lg:text-[60px] xl:text-[70px] md:w-3/4 tracking-wide font-bold leading-tight mb-4"
                 style={{ fontFamily: "'Libre Baskerville', serif" }}
               >
                 כה אמר
               </div>
               <div
-                className="text-5xl sm:text-6xl lg:text-7xl xl:text-6xl text-amber-400 leading-tight italic"
+                className="text-4xl text-center md:text-start md:text-6xl mb-4 text-amber-500 leading-tight italic"
                 style={{ fontFamily: "'Libre Baskerville', serif" }}
               >
                 Thinking Scripturally
@@ -64,7 +64,7 @@ const Home = () => {
 
             {/* Description */}
             <p
-              className="text-slate-200 text-lg sm:text-xl lg:text-xl max-w-3xl mb-8 leading-relaxed font-normal"
+              className="text-sm text-center md:text-start md:text-base text-slate-200 max-w-3xl mb-6 leading-relaxed font-normal"
               style={{ animation: "fadeInUp 0.8s ease-out 0.2s both" }}
             >
               Scripture. Exegesis. Exposition. Theology. Praxis. <br />
@@ -72,12 +72,12 @@ const Home = () => {
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col md:flex-row gap-4"
               style={{ animation: "fadeInUp 0.8s ease-out 0.3s both" }}
             >
               <Link
                 href="/articles"
-                className="group px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-900 font-medium rounded-lg transition-all duration-300 hover:shadow-xl flex items-center justify-center gap-2"
+                className="group px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-900 font-medium rounded-lg transition-all duration-300 hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <span>Explore Articles</span>
                 <svg
@@ -94,7 +94,7 @@ const Home = () => {
                   />
                 </svg>
               </Link>
-              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg backdrop-blur-sm transition-all duration-300 border border-white/20 hover:border-white/40">
+              <button className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg backdrop-blur-sm transition-all duration-300 border border-white/20 hover:border-white/40">
                 Learn More
               </button>
             </div>
@@ -108,7 +108,7 @@ const Home = () => {
             >
               <div
                 className="w-2 h-3 bg-white/50 rounded-full"
-                // style={{ animation: 'scroll 2s ease-in-out infinite' }}
+              // style={{ animation: 'scroll 2s ease-in-out infinite' }}
               />
             </div>
           </div>
