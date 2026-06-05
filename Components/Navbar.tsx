@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 export default function Navbar() {
@@ -18,7 +19,7 @@ export default function Navbar() {
                         {/* Logo */}
                         <div className="flex items-center gap-3 group cursor-pointer">
                             <Link href="/" className="w-12 overflow-hidden h-12 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                                <img src="/logo.jpg" alt="kohamar logo" className='h-full w-full object-cover' />
+                                <Image src="/logo.jpg" alt="Kohamar logo" width={48} height={48} priority className='h-full w-full object-cover' />
                             </Link>
                         </div>
 

@@ -1,4 +1,5 @@
-import { getPostBySlug } from "../../../lib/posts";
+import type { Metadata } from "next";
+import { getAllPosts, getPostBySlug } from "../../../lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import ShareSidebar from "../../../Components/ShareSidebar";
 import {
@@ -6,13 +7,74 @@ import {
   CategoryBadge,
   MetaItem,
   HeroImage,
-  PullQuote,
   User,
   Calendar,
   Clock,
   C,
 } from "../../../Components/ArticleUI";
 import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
+import { buildMetadata, buildScholarMeta } from "../../../lib/seo/metadata";
+import { JsonLd } from "../../../Components/seo/JsonLd";
+import { articleLd, breadcrumbLd } from "../../../lib/seo/jsonld";
+import { absoluteUrl, siteConfig } from "../../../lib/seo/config";
+
+export async function generateStaticParams() {
+  try {
+    return getAllPosts().map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  let post;
+  try {
+    post = getPostBySlug(slug);
+  } catch {
+    return buildMetadata({
+      title: "Article not found",
+      description: "The requested article could not be found.",
+      path: `/articles/${slug}`,
+      noIndex: true,
+    });
+  }
+  const fm = post.frontmatter as Record<string, string | undefined>;
+  const title = fm.title || "Article";
+  const description = fm.description || siteConfig.description;
+  const image = fm.image;
+  const author = fm.author || siteConfig.author.name;
+  const date = fm.date;
+  const category = fm.category;
+
+  return buildMetadata({
+    title,
+    description,
+    path: `/articles/${slug}`,
+    image,
+    type: "article",
+    publishedTime: date,
+    modifiedTime: date,
+    authors: [author],
+    section: category,
+    tags: category ? [category] : undefined,
+    keywords: [
+      ...siteConfig.keywords,
+      ...(category ? [category] : []),
+      author,
+    ],
+    other: buildScholarMeta({
+      title,
+      authors: [author],
+      publishedDate: date,
+      abstract: description,
+    }),
+  });
+}
 
 export default async function ArticleDetailPage({
   params,
@@ -20,23 +82,23 @@ export default async function ArticleDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  // console.log('slug = ' + slug);
   const post = getPostBySlug(slug);
 
-  // Fallback constants if frontmatter is missing
   const category = post.frontmatter.category || "General";
   const title = post.frontmatter.title || "Untitled Article";
   const author = post.frontmatter.author || "Unknown Author";
   const date = post.frontmatter.date || "Unknown Date";
   const readTime = post.frontmatter.readTime || "5 min read";
   const image = post.frontmatter.image;
+  const description = post.frontmatter.description;
 
-  // share btn:
-  const linkUrl = `https://kohamar.aradhanaplatform.com/articles`;
-
-  // const blog = post;
+  const blogUrl = absoluteUrl(`/articles/${slug}`);
   const blogTitle = title;
-  const blogUrl = `${ linkUrl }/${ slug }`;
+  const ogImage = image
+    ? /^https?:\/\//i.test(image)
+      ? image
+      : absoluteUrl(image)
+    : absoluteUrl(siteConfig.defaultOgImage);
 
   return (
     <div
@@ -47,6 +109,28 @@ export default async function ArticleDetailPage({
         paddingBottom: 80,
       }}
     >
+      <JsonLd
+        id="ld-article"
+        data={articleLd({
+          type: "ScholarlyArticle",
+          url: blogUrl,
+          headline: title,
+          description,
+          image: ogImage,
+          datePublished: date,
+          author,
+          section: category,
+          keywords: category ? [category] : undefined,
+        })}
+      />
+      <JsonLd
+        id="ld-article-breadcrumb"
+        data={breadcrumbLd([
+          { name: "Home", url: siteConfig.url },
+          { name: "Articles", url: absoluteUrl("/articles") },
+          { name: title, url: blogUrl },
+        ])}
+      />
       {/* ── Header region ── */}
       <div style={{ background: "#fff", borderBottom: "1px solid #e5e7eb" }}>
         <div
