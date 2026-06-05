@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react'
 
 const Footer = () => {
@@ -13,7 +14,7 @@ const Footer = () => {
                         <div className="md:col-span-2">
                             <div className="flex items-center gap-3 group cursor-pointer mb-4">
                                 <Link href="/" className="w-14 overflow-hidden h-14 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                                    <img src="/logo.jpg" alt="kohamar logo" className='h-full w-full object-cover' />
+                                    <Image src="/logo.jpg" alt="Kohamar logo" width={56} height={56} className='h-full w-full object-cover' />
                                 </Link>
                             </div>
                             <p className="text-gray-700 max-w-md">

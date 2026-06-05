@@ -1,12 +1,16 @@
+import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getQuickReadPostBySlug } from "../../../lib/quickread";
+import { getAllQuickReadPosts, getQuickReadPostBySlug } from "../../../lib/quickread";
 import {
   BackButton,
   C,
-  CategoryBadge,
   HeroImage,
 } from "../../../Components/ArticleUI";
 import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
+import { buildMetadata } from "../../../lib/seo/metadata";
+import { JsonLd } from "../../../Components/seo/JsonLd";
+import { articleLd, breadcrumbLd } from "../../../lib/seo/jsonld";
+import { absoluteUrl, siteConfig } from "../../../lib/seo/config";
 
 interface PageProps {
   params: Promise<{
@@ -14,20 +18,84 @@ interface PageProps {
   }>;
 }
 
+export async function generateStaticParams() {
+  try {
+    return getAllQuickReadPosts().map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  let qr;
+  try {
+    qr = getQuickReadPostBySlug(slug);
+  } catch {
+    return buildMetadata({
+      title: "Quick Read not found",
+      description: "The requested quick read could not be found.",
+      path: `/quick-read/${slug}`,
+      noIndex: true,
+    });
+  }
+  const fm = qr.frontmatter as Record<string, string | undefined>;
+  const title = fm.title || "Quick Read";
+  const description = fm.excerpt || fm.description || siteConfig.description;
+  return buildMetadata({
+    title,
+    description,
+    path: `/quick-read/${slug}`,
+    image: fm.image,
+    type: "article",
+    publishedTime: fm.date,
+    authors: [fm.author || siteConfig.author.name],
+    section: fm.category,
+    tags: fm.tag ? [fm.tag] : fm.category ? [fm.category] : undefined,
+  });
+}
+
 export default async function QuickReadDetail({ params }: PageProps) {
   const { slug } = await params;
   const quickReadData = getQuickReadPostBySlug(slug);
 
-  // Fallback constants if frontmatter is missing
-  const category = quickReadData.frontmatter.category || "General";
   const title = quickReadData.frontmatter.title || "Untitled Article";
-  const author = quickReadData.frontmatter.author || "Unknown Author";
-  const date = quickReadData.frontmatter.date || "Unknown Date";
-  const readTime = quickReadData.frontmatter.readTime || "5 min read";
+  const author = quickReadData.frontmatter.author || siteConfig.author.name;
+  const date = quickReadData.frontmatter.date;
   const image = quickReadData.frontmatter.image;
+  const category = quickReadData.frontmatter.category;
+  const description =
+    quickReadData.frontmatter.excerpt || quickReadData.frontmatter.description;
+  const url = absoluteUrl(`/quick-read/${slug}`);
+  const ogImage = image
+    ? /^https?:\/\//i.test(image)
+      ? image
+      : absoluteUrl(image)
+    : absoluteUrl(siteConfig.defaultOgImage);
 
   return (
     <div className="">
+      <JsonLd
+        id="ld-quickread"
+        data={articleLd({
+          type: "Article",
+          url,
+          headline: title,
+          description,
+          image: ogImage,
+          datePublished: date,
+          author,
+          section: category,
+        })}
+      />
+      <JsonLd
+        id="ld-quickread-detail-breadcrumb"
+        data={breadcrumbLd([
+          { name: "Home", url: siteConfig.url },
+          { name: "Quick Reads", url: absoluteUrl("/quick-read") },
+          { name: title, url },
+        ])}
+      />
       <div
         style={{
           minHeight: "100vh",

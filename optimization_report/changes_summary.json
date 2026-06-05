@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": {
+    "name": "kohamar-aradhanaplatform.com",
+    "domain": "https://kohamar.aradhanaplatform.com",
+    "framework": "next",
+    "framework_version": "16.1.6",
+    "router": "app-router",
+    "hosting": "vercel",
+    "cdn": "cloudflare"
+  },
+  "implementation": {
+    "started_at": "2026-06-04",
+    "completed_at": "2026-06-05",
+    "engineer_role": "Senior SEO Engineer + Next.js Architect",
+    "build_status": "ok",
+    "routes_prerendered": 46
+  },
+  "files": {
+    "created": [
+      { "path": "lib/seo/config.ts", "purpose": "Single source of truth for site SEO data", "impact": "critical" },
+      { "path": "lib/seo/metadata.ts", "purpose": "buildMetadata() and buildScholarMeta() helpers", "impact": "critical" },
+      { "path": "lib/seo/jsonld.ts", "purpose": "Typed JSON-LD builders plus pruneLd()", "impact": "high" },
+      { "path": "lib/seo/rss.ts", "purpose": "RSS 2.0 XML builder with escaping", "impact": "medium" },
+      { "path": "lib/seo/og.tsx", "purpose": "Shared renderDetailOg() for detail-route OG images", "impact": "high" },
+      { "path": "lib/seo/slug.ts", "purpose": "normalizeSlug() and isCanonicalSlug() utilities", "impact": "low" },
+      { "path": "Components/seo/JsonLd.tsx", "purpose": "JsonLd injector component", "impact": "high" },
+      { "path": "app/robots.ts", "purpose": "Generates /robots.txt with sitemap pointer and bot allowlists", "impact": "critical" },
+      { "path": "app/sitemap.ts", "purpose": "Dynamic XML sitemap of all content", "impact": "critical" },
+      { "path": "app/manifest.ts", "purpose": "Generates /manifest.webmanifest", "impact": "medium" },
+      { "path": "app/not-found.tsx", "purpose": "Proper HTTP 404 with noindex", "impact": "medium" },
+      { "path": "app/rss.xml/route.ts", "purpose": "RSS feed at /rss.xml", "impact": "medium" },
+      { "path": "app/opengraph-image.tsx", "purpose": "Site-wide default OG image", "impact": "high" },
+      { "path": "app/articles/[slug]/opengraph-image.tsx", "purpose": "Per-article OG image", "impact": "high" },
+      { "path": "app/books/[slug]/opengraph-image.tsx", "purpose": "Per-book OG image", "impact": "high" },
+      { "path": "app/magazines/[slug]/opengraph-image.tsx", "purpose": "Per-magazine OG image", "impact": "high" },
+      { "path": "app/quick-read/[slug]/opengraph-image.tsx", "purpose": "Per-quick-read OG image", "impact": "high" },
+      { "path": "app/songs/[slug]/opengraph-image.tsx", "purpose": "Per-song OG image", "impact": "high" },
+      { "path": "app/about/AboutClient.tsx", "purpose": "Existing about UI extracted as client component", "impact": "n/a" },
+      { "path": "optimization_report/README.md", "purpose": "Index of report folder", "impact": "n/a" },
+      { "path": "optimization_report/seo_audit_report.md", "purpose": "Phase 1 audit", "impact": "n/a" },
+      { "path": "optimization_report/implementation_summary.md", "purpose": "Executive summary", "impact": "n/a" },
+      { "path": "optimization_report/technical_changes.md", "purpose": "File-by-file narrative", "impact": "n/a" },
+      { "path": "optimization_report/schema_implementation.md", "purpose": "Structured-data documentation", "impact": "n/a" },
+      { "path": "optimization_report/performance_optimization.md", "purpose": "Performance changes and trade-offs", "impact": "n/a" },
+      { "path": "optimization_report/future_recommendations.md", "purpose": "Roadmap and limitations", "impact": "n/a" },
+      { "path": "optimization_report/checklists.md", "purpose": "Operational checklists", "impact": "n/a" },
+      { "path": "optimization_report/changes_summary.json", "purpose": "Machine-readable manifest", "impact": "n/a" }
+    ],
+    "modified": [
+      { "path": "app/layout.tsx", "summary": "metadataBase, default OG/Twitter/robots/icons/manifest/viewport/title template; global Organization+WebSite JSON-LD; font display swap", "impact": "critical" },
+      { "path": "app/page.tsx", "summary": "Per-route metadata for / with canonical", "impact": "critical" },
+      { "path": "app/home/page.tsx", "summary": "noindex + canonical to /, removes /home duplicate-content risk", "impact": "critical" },
+      { "path": "app/about/page.tsx", "summary": "Now server component, exports metadata, emits Person+Breadcrumb LD, renders AboutClient", "impact": "high" },
+      { "path": "app/contact/page.tsx", "summary": "Added metadata", "impact": "low" },
+      { "path": "app/articles/page.tsx", "summary": "Metadata + Breadcrumb LD + CollectionPage LD", "impact": "high" },
+      { "path": "app/articles/[slug]/page.tsx", "summary": "generateStaticParams + generateMetadata (Scholar tags) + ScholarlyArticle/Breadcrumb LD; hard-coded URL replaced", "impact": "critical" },
+      { "path": "app/books/page.tsx", "summary": "Metadata + Breadcrumb LD + CollectionPage LD", "impact": "high" },
+      { "path": "app/books/[slug]/page.tsx", "summary": "generateStaticParams + generateMetadata + Book/Breadcrumb LD", "impact": "high" },
+      { "path": "app/magazines/page.tsx", "summary": "Metadata + Breadcrumb LD + CollectionPage LD", "impact": "high" },
+      { "path": "app/magazines/[slug]/page.tsx", "summary": "generateStaticParams + generateMetadata (Scholar tags) + Article/Breadcrumb LD", "impact": "high" },
+      { "path": "app/quick-read/page.tsx", "summary": "Metadata + Breadcrumb LD + CollectionPage LD", "impact": "high" },
+      { "path": "app/quick-read/[slug]/page.tsx", "summary": "generateStaticParams + generateMetadata + Article/Breadcrumb LD", "impact": "high" },
+      { "path": "app/songs/page.tsx", "summary": "Metadata + Breadcrumb LD + CollectionPage LD", "impact": "high" },
+      { "path": "app/songs/[slug]/page.tsx", "summary": "generateMetadata + MusicRecording/Breadcrumb LD", "impact": "high" },
+      { "path": "Components/Navbar.tsx", "summary": "Logo img -> next/image with priority", "impact": "medium" },
+      { "path": "Components/Footer.tsx", "summary": "Logo img -> next/image", "impact": "medium" },
+      { "path": "lib/posts.ts", "summary": "Removed production console.log", "impact": "low" },
+      { "path": "lib/quickread.ts", "summary": "Removed production console.log", "impact": "low" }
+    ],
+    "deleted": []
+  },
+  "structured_data": {
+    "schemas_deployed": [
+      "Organization",
+      "WebSite",
+      "BreadcrumbList",
+      "CollectionPage",
+      "ScholarlyArticle",
+      "Article",
+      "Book",
+      "MusicRecording",
+      "Person"
+    ],
+    "google_scholar_tags": [
+      "citation_title",
+      "citation_author",
+      "citation_publication_date",
+      "citation_date",
+      "citation_abstract",
+      "citation_pdf_url",
+      "citation_online_date"
+    ],
+    "scholar_routes": ["/articles/[slug]", "/magazines/[slug]"]
+  },
+  "routes_affected": [
+    "/",
+    "/home",
+    "/about",
+    "/contact",
+    "/articles",
+    "/articles/[slug]",
+    "/books",
+    "/books/[slug]",
+    "/magazines",
+    "/magazines/[slug]",
+    "/quick-read",
+    "/quick-read/[slug]",
+    "/songs",
+    "/songs/[slug]",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/rss.xml",
+    "/manifest.webmanifest",
+    "/opengraph-image",
+    "/articles/[slug]/opengraph-image",
+    "/books/[slug]/opengraph-image",
+    "/magazines/[slug]/opengraph-image",
+    "/quick-read/[slug]/opengraph-image",
+    "/songs/[slug]/opengraph-image",
+    "/_not-found"
+  ],
+  "indexing_fixes": [
+    "Canonical URLs on every route",
+    "noindex + canonical=/ on /home to fix duplicate content with /",
+    "sitemap.xml advertises 24 content URLs",
+    "robots.txt explicitly allows Googlebot, Googlebot-News, Google-Extended, GPTBot, Bingbot",
+    "Custom 404 returns proper HTTP 404 with noindex",
+    "generateStaticParams ensures all dynamic routes are prerendered"
+  ],
+  "metadata_fixes": [
+    "metadataBase set so OG/Twitter URLs are absolute",
+    "Per-route titles using template",
+    "Per-route descriptions with safe truncation",
+    "OG type per content category (article, book, music.song, website)",
+    "Twitter summary_large_image cards site-wide",
+    "Google Scholar citation_* tags on articles and magazines"
+  ],
+  "performance_fixes": [
+    "Logo via next/image with priority",
+    "Geist fonts display: swap",
+    "Production console.log removed",
+    "RSS cache headers for Cloudflare edge"
+  ],
+  "validation_results": {
+    "robots_txt": "200 OK, sitemap pointer correct, /home disallowed",
+    "sitemap_xml": "200 OK, well-formed, 24 entries",
+    "rss_xml": "200 OK, Content-Type application/rss+xml, escaped entities",
+    "manifest_webmanifest": "200 OK, valid JSON",
+    "default_opengraph_image": "200 OK, image/png",
+    "article_opengraph_image": "200 OK, image/png",
+    "song_opengraph_image": "200 OK, image/png",
+    "not_found": "404 with noindex meta and canonical-template title",
+    "home_canonical": "/home returns 200 with noindex,follow and canonical to /",
+    "article_jsonld_count": 2,
+    "home_jsonld_count": 2,
+    "build": "Compiled successfully; 46/46 routes prerendered"
+  },
+  "cloudflare_recommendations": [
+    "Allow Cloudflare to cache /robots.txt and /sitemap.xml at the edge",
+    "RSS edge cache controlled via explicit Cache-Control",
+    "No bypass rules needed for any SEO endpoint",
+    "If using Cloudflare Cache Rules, ensure /opengraph-image and /<segment>/[slug]/opengraph-image are not aggressively cached on parameter changes"
+  ],
+  "vercel_considerations": [
+    "Default opengraph-image runs on edge runtime",
+    "Per-detail opengraph-image routes use nodejs runtime due to filesystem access",
+    "React Compiler enabled at framework level",
+    "No vercel.json needed"
+  ],
+  "limitations_and_warnings": [
+    "Quick-read dates are not ISO; sitemap loader handles via safeDate but article:published_time meta is omitted for those entries",
+    "Display fonts in hero <style> blocks still use CSS @import (deliberate, UX-safe)",
+    "Public/ contains unused Next.js demo SVGs (next.svg, vercel.svg, file.svg, globe.svg, window.svg)",
+    "Single-author assumption in schema; multi-author support needs frontmatter extension",
+    "No structured citations/references list emitted yet"
+  ],
+  "next_optimization_phases": [
+    "Migrate display fonts to next/font",
+    "Add isbn/bookFormat/pdfUrl to frontmatter",
+    "Populate siteConfig.author.sameAs (ORCID, Scholar profile)",
+    "Add /categories/[name] and /authors/[slug] routes",
+    "Replace react-youtube with native lazy iframe",
+    "Add eslint rule next/no-img-element"
+  ]
+}

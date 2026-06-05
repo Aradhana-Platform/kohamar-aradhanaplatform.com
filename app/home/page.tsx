@@ -1,14 +1,21 @@
 // "use client";
-import BlogCards from "../../Components/BlogCards";
+import type { Metadata } from "next";
 import Category from "../../Components/Category";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ArticlePost from "./ArticlePost";
 import HomeFeature from "../../Components/HomeFeature";
-import { QuickRead } from "../quick-read/QuickRead";
 import HomeQuickReads from "../../Components/HomeQuickReads";
-// import { getAllPosts } from '../../lib/posts';
+import { buildMetadata } from "../../lib/seo/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Home",
+  description:
+    "Kohamar — Thinking Scripturally. Articles, magazines, books, songs, and quick reads by Amar Pandey.",
+  path: "/",
+  canonical: "/",
+  noIndex: true,
+});
 
 const Home = () => {
   // const posts = getAllPosts();

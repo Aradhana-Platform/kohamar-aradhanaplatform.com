@@ -5,12 +5,10 @@ import matter from "gray-matter";
 const quickReadPostsDirectory = path.join(process.cwd(), "content/quickread");
 
 export function getAllQuickReadPosts() {
-  // console.log('quickReadPostsDirectory = ' + quickReadPostsDirectory);
   const files = fs.readdirSync(quickReadPostsDirectory);
 
   return files.map((file) => {
     const slug = file.replace(".mdx", "");
-    console.log('slug = ' + slug);
     const fullPath = path.join(quickReadPostsDirectory, file);
     const fileContent = fs.readFileSync(fullPath, "utf-8");
 
@@ -32,7 +30,6 @@ export function getAllQuickReadPosts() {
 }
 
 export function getQuickReadPostBySlug(slug: string) {
-  console.log('slug = ' + slug);
   const fullPath = path.join(quickReadPostsDirectory, `${slug}.mdx`);
   const fileContent = fs.readFileSync(fullPath, "utf-8");
 

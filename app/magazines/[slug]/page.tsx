@@ -1,10 +1,65 @@
-import ReactMarkdown from "react-markdown";
-import { BackButton, HeroImage } from "../../../Components/ArticleUI";
-import { getMagazineBySlug } from "../../../lib/magazine";
-import { MDXProvider } from "@mdx-js/react";
+import type { Metadata } from "next";
+import { BackButton } from "../../../Components/ArticleUI";
+import { getAllPosts, getMagazineBySlug } from "../../../lib/magazine";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { EnterMdxComponent } from "../../../Components/mdx-components/EnterMdxComponent";
 import Image from "next/image";
+import { buildMetadata, buildScholarMeta } from "../../../lib/seo/metadata";
+import { JsonLd } from "../../../Components/seo/JsonLd";
+import { articleLd, breadcrumbLd } from "../../../lib/seo/jsonld";
+import { absoluteUrl, siteConfig } from "../../../lib/seo/config";
+
+export async function generateStaticParams() {
+  try {
+    return getAllPosts().map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  let magazine;
+  try {
+    magazine = getMagazineBySlug(slug);
+  } catch {
+    return buildMetadata({
+      title: "Magazine not found",
+      description: "The requested magazine entry could not be found.",
+      path: `/magazines/${slug}`,
+      noIndex: true,
+    });
+  }
+  const fm = magazine.frontmatter as Record<string, string | undefined>;
+  const title = fm.title || "Magazine";
+  const description = fm.description || siteConfig.description;
+  const image = fm.image;
+  const author = fm.author || siteConfig.author.name;
+  const date = fm.date;
+  const category = fm.category;
+
+  return buildMetadata({
+    title,
+    description,
+    path: `/magazines/${slug}`,
+    image,
+    type: "article",
+    publishedTime: date,
+    modifiedTime: date,
+    authors: [author],
+    section: category,
+    tags: category ? [category] : undefined,
+    other: buildScholarMeta({
+      title,
+      authors: [author],
+      publishedDate: date,
+      abstract: description,
+    }),
+  });
+}
 
 export default async function page({
   params,
@@ -20,9 +75,37 @@ export default async function page({
   const readTime = magazine.frontmatter.readTime || "Unkown read time";
   const image = magazine.frontmatter.image || "";
   const category = magazine.frontmatter.category || "Unkown category";
+  const description = magazine.frontmatter.description as string | undefined;
+  const url = absoluteUrl(`/magazines/${slug}`);
+  const ogImage = image
+    ? /^https?:\/\//i.test(image)
+      ? image
+      : absoluteUrl(image)
+    : absoluteUrl(siteConfig.defaultOgImage);
 
   return (
     <>
+      <JsonLd
+        id="ld-magazine"
+        data={articleLd({
+          type: "Article",
+          url,
+          headline: title,
+          description,
+          image: ogImage,
+          datePublished: date,
+          author,
+          section: category,
+        })}
+      />
+      <JsonLd
+        id="ld-magazine-breadcrumb"
+        data={breadcrumbLd([
+          { name: "Home", url: siteConfig.url },
+          { name: "Magazines", url: absoluteUrl("/magazines") },
+          { name: title, url },
+        ])}
+      />
       <div
         style={{
           position: "relative",
