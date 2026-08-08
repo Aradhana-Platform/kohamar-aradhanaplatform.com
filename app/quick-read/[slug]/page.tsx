@@ -144,7 +144,7 @@ export default async function QuickReadDetail({ params }: PageProps) {
         </div>
 
         {/* ── Article body grid (content + sidebar) ── */}
-        <div className="mx-auto max-w-[1400px] md:max-w-[1200px] px-[4vw] md:px-[6vw] pt-12">
+        <div className="mx-auto max-w-350 md:max-w-300 px-[4vw] md:px-[6vw] pt-12">
           {/* main content column */}
           <div className="prose prose-lg prose-slate max-w-none">
             <MDXRemote
